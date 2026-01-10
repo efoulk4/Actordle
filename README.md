@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-    This Application is a web game patterned after the many games fashioned after the famous Wordle:tm:. Users will be able to test their knowledge of cinema by naming as many movies a given actor/actress starred in within a 1:30 time period. Results will be able to be shared, but will also be pushed to a live leaderboard, where scores from other users will be displayed.
+    This Application is a web game patterned after the many games fashioned after the famous Wordle:tm:. Users will be able to test their knowledge of cinema by naming as many movies a given actor/actress was featured in within a 1:30 time period. Results will be able to be shared, but will also be pushed to a live leaderboard, where scores from other users will be displayed.
 
 ## 🚀 Specification Deliverable
 
@@ -19,7 +19,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledege of cinema to the very limit by challanging users to name as many movies a given actor/actress was featured in. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
 
 ### Design
 
