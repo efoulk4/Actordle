@@ -52,20 +52,21 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Option to share score after the game
+- auto-complete movie guesses to avoid spelling errors
+- Local personal bests stored to compare with previous high scores
+- Daily leaderboards stored to compare with other users
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard
+- **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, contrast as well as basic clip art type decorations
+- **React** - Start/Stop timer, track previous guesses, and track/calculate score
+- **Service** - Validates movie guesses, chooses actor/actress of the day, updates live leaderboard, storage of local scores during the game
+- **DB/Login** - Maintains actor/actress of the day for uniformity across all users, stores global leaderboard
+- **WebSocket** - As a user finishes a game their score is pushed to a live global lederboard accessible to all other users.
 
 ## 🚀 AWS deliverable
 
