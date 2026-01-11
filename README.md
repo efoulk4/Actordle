@@ -38,10 +38,16 @@ sequenceDiagram
     You->>Website: Start Game
     Website->>Timer: Initialize
     Timer-->>You: Display Time Remaining
-    Website-->>You: Actor/Actress Provided
-    You-->>Website: Guess Movie
-    Website-->>Validator: Check Guess
-
+    loop While time remains
+        Website-->>You: Actor/Actress Provided
+        You-->>Website: Guess Movie
+        Website->>Validator: Check Guess
+        Validator-->>Website: Guess result
+        Website-->>You: Update Displayed Score
+    end
+    Website->>Leaderboard: Update Leaderboard
+    Leaderboard-->>You: Display Updated Standings
+    Leaderboard-->>Friend: Display Updated Standings
 ```
 
 ### Key features
