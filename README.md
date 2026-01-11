@@ -2,7 +2,7 @@
 
 This Application is a web game patterned after the many games fashioned after the famous "Wordle." Users will be able to test their knowledge of cinema by naming as many movies a given actor/actress was featured in within a 1:30 time period. Results will be able to be shared, but will also be pushed to a live leaderboard, where scores from other users will be displayed.
 
-## 🚀 Specification Deliverable
+## Specification Deliverable
 
 
 ### Elevator pitch
@@ -51,7 +51,7 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard
 - **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, sufficient and appealing contrast as well as basic clip art type page decorations
-- **React** - Start/Stop timer, track previous guesses, and track/calculate score
+- **React** - Start/Stop timer, track previous guesses, and track frontend displayed score
 - **Service** - Validates movie guesses, chooses actor/actress of the day, updates live leaderboard, seperates user from official score to prevent foul play
 - **DB/Login** - Maintains actor/actress of the day for uniformity across all users, stores global leaderboard
 - **WebSocket** - As a user finishes a game their score is pushed to a live global lederboard accessible to all other users.
