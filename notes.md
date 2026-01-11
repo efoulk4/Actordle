@@ -8,6 +8,9 @@
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
 
+## Markdown
+So I've never actually used markdown before, and it's crazy how quickly I'm starting to udnerstand concepts i've struggled with for a long time. I've never erally understood the best way to use girhub and for some reason never thoguht to learn markdown (not that it's very complex.). It's effectivly a text document for the most part but with a lot of cool features. I was shocked to see you could put full UML sequences in just via mermaid.
+
 ## AWS
 
 My IP address is: 54.81.96.130
