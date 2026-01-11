@@ -39,8 +39,9 @@ sequenceDiagram
 
 ### Key features
 
+- New actor/actress every day
 - Option to share score after the game
-- auto-complete movie guesses to avoid spelling errors
+- Auto-complete movie guesses to avoid spelling errors
 - Local personal bests stored to compare with previous high scores
 - Daily leaderboards stored to compare with other users
 
@@ -49,9 +50,9 @@ sequenceDiagram
 I am going to use the required technologies in the following ways.
 
 - **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard
-- **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, contrast as well as basic clip art type decorations
+- **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, sufficient and appealing contrast as well as basic clip art type page decorations
 - **React** - Start/Stop timer, track previous guesses, and track/calculate score
-- **Service** - Validates movie guesses, chooses actor/actress of the day, updates live leaderboard, storage of local scores during the game
+- **Service** - Validates movie guesses, chooses actor/actress of the day, updates live leaderboard, seperates user from official score to prevent foul play
 - **DB/Login** - Maintains actor/actress of the day for uniformity across all users, stores global leaderboard
 - **WebSocket** - As a user finishes a game their score is pushed to a live global lederboard accessible to all other users.
 
