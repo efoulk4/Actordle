@@ -30,10 +30,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 sequenceDiagram
     actor Friend
     actor You
-    object Website
-    object Timer
-    object Validator
-    object Leaderboard
+    participant Website
+    participant Timer
+    participant Validator
+    participant Leaderboard
+
     You->>Website: Start Game
     Website->>Timer: Initialize
     Timer-->>You: Display Time Remaining
