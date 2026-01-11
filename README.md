@@ -28,9 +28,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ```mermaid
 sequenceDiagram
+    actor Friend
     actor You
-    actor Website
-    You->>Website: Replace this with your design
+    object Website
+    object Timer
+    object Validator
+    object Leaderboard
+    You->>Website: Start Game
+    Website->>Timer: Initialize
+    Timer-->>You: Display Time Remaining
+    Website-->>You: Actor/Actress Provided
+    You-->>Website: Guess Movie
+    Website-->>Validator: Check Guess
+
 ```
 
 ### Key features
