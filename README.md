@@ -7,7 +7,7 @@ This Application is a web game patterned after the many games fashioned after th
 
 ### Elevator pitch
 
-We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledege of cinema to the very limit by challanging users to name as many movies a given actor/actress was featured in within a brief 1:30. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
+We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledege of cinema to the very limit by challanging users to name as many movies a given actor/actress was featured in. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
 
 ### Design
 
@@ -52,7 +52,7 @@ I am going to use the required technologies in the following ways.
 - **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard
 - **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, sufficient and appealing contrast as well as basic clip art type page decorations
 - **React** - Start/Stop timer, track previous guesses, and track frontend displayed score
-- **Service** - Provides endpoints for the following
+- **Service** - Provides endpoints for the following:
     - Retrieving the current actor/actress of the day
     - Validating guesses
     - Tracking and updating scores
