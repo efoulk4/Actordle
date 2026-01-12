@@ -7,7 +7,7 @@ This Application is a web game patterned after the many games fashioned after th
 
 ### Elevator pitch
 
-We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledege of cinema to the very limit by challanging users to name as many movies a given actor/actress was featured in. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
+We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledege of cinema to the very limit by challanging users to name as many movies a given actor/actress was featured in within a brief 1:30. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
 
 ### Design
 
