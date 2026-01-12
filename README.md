@@ -7,7 +7,7 @@ This Application is a web game patterned after the many games fashioned after th
 
 ### Elevator pitch
 
-We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledege of cinema to the very limit by challanging users to name as many movies a given actor/actress was featured in. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
+We've all met that one person who knows way too much about movies -- but how much do they really know? Actordle stretches your knowledge of cinema to the very limit by challenging users to name as many movies a given actor/actress was featured in. Climb the leaderboard and share your results to see who *actually* knows the classics best out of your friends and family.
 
 ### Design
 
@@ -49,16 +49,17 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard
-- **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, sufficient and appealing contrast as well as basic clip art type page decorations
-- **React** - Start/Stop timer, track previous guesses, and track frontend displayed score
+- **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard.
+- **CSS** - UI that is fitted to both PC and mobile, allowing for users to quickly play wherever they are, sufficient and appealing contrast as well as basic visual assets.
+- **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard.
 - **Service** - Provides endpoints for the following:
-    - Retrieving the current actor/actress of the day
+    - Fetching details on actors/actresses and the movies they featured in (external: TMDB)
+    - Choosing an actor/actress of the day
     - Validating guesses
     - Tracking and updating scores
     - retrieving the global leaderboard from the database.
-- **DB/Login** - Maintains actor/actress of the day for uniformity across all users, stores global leaderboard
-- **WebSocket** - As a user finishes a game their score is pushed to a live global lederboard accessible to all other users.
+- **DB/Login** - Stores global leaderboard.
+- **WebSocket** - As a user finishes a game their score is pushed to a live global leaderboard accessible to all other users.
 
 ## 🚀 AWS deliverable
 
