@@ -52,7 +52,11 @@ I am going to use the required technologies in the following ways.
 - **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard
 - **CSS** - UI that is fiited to both PC and mobile, allowing for users to quickly play whever they are, sufficient and appealing contrast as well as basic clip art type page decorations
 - **React** - Start/Stop timer, track previous guesses, and track frontend displayed score
-- **Service** - Validates movie guesses, chooses actor/actress of the day, updates live leaderboard, seperates user from official score to prevent foul play
+- **Service** - Provides endpoints for the following
+    - Retrieving the current actor/actress of the day
+    - Validating guesses
+    - Tracking and updating scores
+    - retrieving the global leaderboard from the database.
 - **DB/Login** - Maintains actor/actress of the day for uniformity across all users, stores global leaderboard
 - **WebSocket** - As a user finishes a game their score is pushed to a live global lederboard accessible to all other users.
 
