@@ -19,8 +19,8 @@ sequenceDiagram
     actor You
     participant Website
     participant Timer
-    participant Validator
-    participant Leaderboard
+    participant Service
+    participant Database
 
     You->>Website: Start Game
     Website->>Timer: Initialize
@@ -28,13 +28,13 @@ sequenceDiagram
     loop While time remains
         Website-->>You: Actor/Actress Provided
         You-->>Website: Guess Movie
-        Website->>Validator: Check Guess
-        Validator-->>Website: Guess result
+        Website->>Service: Check Guess
+        Service-->>Website: Guess result
         Website-->>You: Update Displayed Score
     end
-    Website->>Leaderboard: Update Leaderboard
-    Leaderboard-->>You: Display Updated Standings
-    Leaderboard-->>Friend: Display Updated Standings
+    Website->>Database: Update Leaderboard
+    Database-->>You: Display Updated Standings
+    Database-->>Friend: Display Updated Standings
 ```
 
 ### Key features
