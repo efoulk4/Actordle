@@ -23,6 +23,8 @@ sequenceDiagram
     participant Database
 
     You->>Website: Start Game
+    Website->>You: Nickname?
+    You-->>Website: Nickname provided
     Website->>Timer: Initialize
     Timer-->>You: Display Time Remaining
     loop While time remains
@@ -43,7 +45,7 @@ sequenceDiagram
 - Option to share score after the game
 - Auto-complete movie guesses to avoid spelling errors
 - Local personal bests stored to compare with previous high scores
-- Daily leaderboards stored to compare with other users
+- “Live leaderboard showing all players’ scores in real time”
 
 ### Technologies
 
@@ -51,7 +53,7 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard.
 - **CSS** - UI that is fitted to both PC and mobile, allowing for users to quickly play wherever they are, sufficient and appealing contrast as well as basic visual assets.
-- **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard.
+- **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard, allows user to choose nickname to be displayed on the leaderboard.
 - **Service** - Provides endpoints for the following:
     - Fetching details on actors/actresses and the movies they featured in (external: TMDB)
     - Choosing an actor/actress of the day
