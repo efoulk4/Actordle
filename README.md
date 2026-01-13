@@ -11,6 +11,7 @@ We've all met that one person who knows way too much about movies -- but how muc
 
 ### Design
 
+<img width="1024" height="1536" alt="Login" src="https://github.com/user-attachments/assets/95ef7fd8-320f-4ae5-8547-debc31e32812" />
 ![Design Image](https://github.com/user-attachments/assets/5a5ce55b-fc12-4759-8ec1-4260e6f35a64)
 
 ```mermaid
