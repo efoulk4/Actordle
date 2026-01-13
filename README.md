@@ -4,6 +4,14 @@ This Application is a web game patterned after the many games fashioned after th
 
 ## Specification Deliverable
 
+For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
+
+- [x] Proper use of Markdown -- Most of the formatting in the .md file was pre-provided. However, minor tweaks and deletions were necessary to improve presentation and allow for the emphasis of certain words e.g. italics in the elvator pitch.
+- [x] A concise and compelling elevator pitch -- This game should tailor to most audiences, but for my family in particualr this will be a major competition. The inherent competition in the game should help users to continue using it.
+- [x] Description of key features -- This list is surely not extensive, but that would be beyond the scope of this project. All major features that are central to the programs design are included.
+- [x] Description of how you will use each technology -- All technologies have at least one implementation in the program, and though the list is not exhaustive, it includes major pivots for the project that are crucial to its functionality.
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. -- Images included below: Login screen, game screen, and leaderboard display.
+
 
 ### Elevator pitch
 
