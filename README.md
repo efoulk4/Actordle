@@ -63,7 +63,7 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - One Primary HTML page which will serve as an entry point to different react managed pages: Login, Game, and Leaderboard.
+- **HTML** - One primary HTML page which will serve as an entry point to the applicatoin. React will then manage the login, game, and leaderboard views.
 - **CSS** - UI that is fitted to both PC and mobile, allowing for users to quickly play wherever they are, sufficient and appealing contrast as well as basic visual assets.
 - **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard, handles switches between login, game, and leaderboard.
 - **Service** - Provides endpoints for the following:
