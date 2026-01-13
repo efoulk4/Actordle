@@ -6,8 +6,8 @@ This Application is a web game patterned after the many games fashioned after th
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] Proper use of Markdown -- Most of the formatting in the .md file was pre-provided. However, minor tweaks and deletions were necessary to improve presentation and allow for the emphasis of certain words e.g. italics in the elvator pitch.
-- [x] A concise and compelling elevator pitch -- This game should tailor to most audiences, but for my family in particualr this will be a major competition. The inherent competition in the game should help users to continue using it.
+- [x] Proper use of Markdown -- Most of the formatting in the .md file was pre-provided. However, minor tweaks and deletions were necessary to improve presentation and allow for the emphasis of certain words e.g. italics in the elevator pitch.
+- [x] A concise and compelling elevator pitch -- This game should tailor to most audiences, but for my family in particular this will be a major competition. The inherent competition in the game should help users to continue using it.
 - [x] Description of key features -- This list is surely not extensive, but that would be beyond the scope of this project. All major features that are central to the programs design are included.
 - [x] Description of how you will use each technology -- All technologies have at least one implementation in the program, and though the list is not exhaustive, it includes major pivots for the project that are crucial to its functionality.
 - [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. -- Images included below: Login screen, game screen, and leaderboard display.
@@ -32,7 +32,7 @@ sequenceDiagram
     participant Service
     participant Database
 
-    You->>Webstire: Create Account/Login
+    You->>Website: Create Account/Login
     Website->>Database: Valid Login?
     Database-->>Website: Login Validation
     You->>Website: Start Game
@@ -52,18 +52,18 @@ sequenceDiagram
 
 ### Key features
 
-- Login for authentication and persistance of user data
+- Login for authentication and persistence of user data
 - New actor/actress every day
 - Option to share score after the game
 - Auto-complete movie guesses to avoid spelling errors
 - Local personal bests stored to compare with previous high scores
-- “Live leaderboard showing all players’ scores in real time”
+- Live leaderboard showing all players’ scores in real time
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - One Primary HTML page which will act as structure to different pages home to the login, game, and leaderboard.
+- **HTML** - One Primary HTML page which will serve as an entry point to different react managed pages: Login, Game, and Leaderboard.
 - **CSS** - UI that is fitted to both PC and mobile, allowing for users to quickly play wherever they are, sufficient and appealing contrast as well as basic visual assets.
 - **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard, handles switches between login, game, and leaderboard.
 - **Service** - Provides endpoints for the following:
