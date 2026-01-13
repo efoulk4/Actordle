@@ -41,6 +41,7 @@ sequenceDiagram
 
 ### Key features
 
+- Login for authentication and persistance of user data
 - New actor/actress every day
 - Option to share score after the game
 - Auto-complete movie guesses to avoid spelling errors
