@@ -24,9 +24,10 @@ sequenceDiagram
     participant Service
     participant Database
 
+    You->>Webstire: Create Account/Login
+    Website->>Database: Valid Login?
+    Database-->>Website: Login Validation
     You->>Website: Start Game
-    Website->>You: Nickname?
-    You-->>Website: Nickname provided
     Website->>Timer: Initialize
     Timer-->>You: Display Time Remaining
     loop While time remains
@@ -54,16 +55,18 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - One Primary HTML page which will be used to both host the game and display the leaderboard.
+- **HTML** - One Primary HTML page which will act as structure to different pages home to the login, game, and leaderboard.
 - **CSS** - UI that is fitted to both PC and mobile, allowing for users to quickly play wherever they are, sufficient and appealing contrast as well as basic visual assets.
-- **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard, allows user to choose nickname to be displayed on the leaderboard.
+- **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard, handles switches between login, game, and leaderboard.
 - **Service** - Provides endpoints for the following:
+    - Login
+    - Registration
     - Fetching details on actors/actresses and the movies they featured in (external: TMDB)
     - Choosing an actor/actress of the day
     - Validating guesses
     - Tracking and updating scores
     - retrieving the global leaderboard from the database.
-- **DB/Login** - Stores global leaderboard.
+- **DB/Login** - Stores global leaderboard, usernames, user data i.e. high scores, password hashes for login.
 - **WebSocket** - As a user finishes a game their score is pushed to a live global leaderboard accessible to all other users.
 
 ## 🚀 AWS deliverable
