@@ -63,7 +63,7 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - One primary HTML page which will serve as an entry point to the applicatoin. React will then manage the login, game, and leaderboard views.
+- **HTML** - One primary HTML page which will serve as an entry point to the application. React will then manage the login, game, and leaderboard views.
 - **CSS** - UI that is fitted to both PC and mobile, allowing for users to quickly play wherever they are, sufficient and appealing contrast as well as basic visual assets.
 - **React** - Start/Stop timer, relays guesses to service, track previous guesses, and track frontend displayed score, displays leaderboard, handles switches between login, game, and leaderboard.
 - **Service** - Provides endpoints for the following:
@@ -73,7 +73,7 @@ I am going to use the required technologies in the following ways.
     - Choosing an actor/actress of the day
     - Validating guesses
     - Tracking and updating scores
-    - retrieving the global leaderboard from the database.
+    - Retrieving the global leaderboard from the database.
 - **DB/Login** - Stores global leaderboard, usernames, user data i.e. high scores, password hashes for login.
 - **WebSocket** - As a user finishes a game their score is pushed to a live global leaderboard accessible to all other users.
 
