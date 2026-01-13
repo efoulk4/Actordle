@@ -22,11 +22,12 @@ No problems worked just like it said in the [instruction](https://github.com/web
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
-
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+Never really had a ton of expereince with HTML--
+Structure with absolutley no dictation over the style of the site
 
 ## CSS
+
+Cascading Style Sheets -- possible to make complex images with just CSS but that's a bit excessive
 
 This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
 
