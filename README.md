@@ -87,15 +87,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I have a total of 4 HTML pages, which very well might go away when we get to react, but for now serve to navigate the functionality of the game.
+- [x] **Proper HTML element usage** - All of the elements mentioned in the rubric along with a few others are included in the HTML files 
+- [x] **Links** - nav links inserted in header
+- [x] **Text** - How to play and what the site is explained on the about page.
+- [x] **3rd party API placeholder** - I just had to leave an effective note on the site for this step. When the user types a guess, the box with auto complete to know movies as pulled from TMDB's open API, similarly,l the guess will be checked against he the known movies that the actor did or did not feature in.
+- [x] **Images** - 2 images included on the play page.
+- [x] **Login placeholder** - Login and Create account forms functioning.
+- [x] **DB data placeholder** - Persisting leaderboard as included on the leaderboard page
+- [x] **WebSocket placeholder** - Live feed enabled below guessing UI to allow fo users to compete live with one another.
 
 ## 🚀 CSS deliverable
 
