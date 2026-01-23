@@ -13,8 +13,10 @@ So I've never actually used markdown before, and it's crazy how quickly I'm star
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+Public IP is: 98.95.44.7
+I know that a lot was glossed over in the starting of this instance but i still gleaned a lot from it. I certainly better undertand the interactions between DNS and IPs.
+It is very intuitive so if I ever wanted to make another site I'm sure it wouldnt be that difficult -- however, the details of some of the prepackaged AMI would be nice to know.
+I had to reboot my instance -- not sure exactly why, but everything is working smoothly now.
 
 ## Caddy
 
