@@ -25,15 +25,21 @@ No problems worked just like it said in the [instruction](https://github.com/web
 Never really had a ton of expereince with HTML--
 Structure with absolutley no dictation over the style of the site
 
+Title as a subtree of head is rendered in the tab title
+p -- paragraph element
+a -- href hypperlinks
+img has both alt path and source enabling display for users with visiual impairment
+h1 - h5 heading sizes
+ol, ul -- ordered and unordered lists
+-- li is a list item
+
+
 ## CSS
 
 Cascading Style Sheets -- possible to make complex images with just CSS but that's a bit excessive
 
-This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
-
-Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
-
-I did like the navbar it made it super easy to build a responsive header.
+"the browser doesn't decide my destiny, i decide my destiny"
+We absolutley flew through this in class, I'll need to play around with this for a prolonged period of time.
 
 ```html
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
