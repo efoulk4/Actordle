@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Montserrat;
 }
 
 .navbar {
@@ -9,6 +11,13 @@
     justify-content: center;
     gap: 10px;
 
+}
+#todaysactor {
+    margin: auto;
+}
+.actorimage {
+    max-height:300px;
+    max-width: 200px;
 }
 .navitem {
     color: black;
@@ -34,15 +43,23 @@ table.prevguesses {
     color: black;
     margin-left: auto;
     margin-right: auto;
-  align-content: center;
+    align-content: center;
     height: 65%;
     width: 50%;
-
+    border-spacing: 0;
+    max-width: 400px;
+    font-size: x-large;
+}
+.lrow {
+    color: darkslateblue;
+    font-size: 1.25em;
+}
+.abovefooter {
+    margin-top: auto;
 }
 header {
 height: fit-content;
 }
-
 body {
     height: 100vh;
     display: flex;
@@ -53,6 +70,8 @@ body {
     text-align: center;
 }
 main {
+display: flex;
+flex-direction: column;
 flex-grow: 1;
 justify-content: space-around;
 align-content: center;
@@ -79,8 +98,8 @@ section.playboard {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: auto;
     border: 10px thin solid black;
-    padding-left: 200px;
-    padding-right: 200px;
+
 }
