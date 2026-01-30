@@ -71,6 +71,16 @@ We absolutley flew through this in class, I'll need to play around with this for
     </header>
 ```
 
+### Responsive Design
+```html
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+```
+Block displays are directly proportional to the display interface and are most commonly used for paragraphs
+Inlines on the other hand are still relative to display in regards to orientation, but maintain size.
+
 I also used SVG to make the icon and logo for the app. This turned out to be a piece of cake.
 
 ```html
