@@ -23,16 +23,28 @@
 .navlink-active{
     color: grey;
 }
+table.prevguesses {
+    margin-left: auto;
+    margin-right: auto;
+}
 #sitename{
     justify-content: flex-start;
 }
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+#lboard{
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+  align-content: center;
+    height: 65%;
+    width: 50%;
+
 }
+header {
+height: fit-content;
+}
+
 body {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     color: slategrey;
@@ -41,10 +53,13 @@ body {
     text-align: center;
 }
 main {
+flex-grow: 1;
 justify-content: space-around;
+align-content: center;
 }
 
 footer {
+    max-height: 100px;
     height: fit-content;
     display: flex;
     flex-direction: column;
