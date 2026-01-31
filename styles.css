@@ -16,8 +16,8 @@
     margin: auto;
 }
 .actorimage {
-    max-height:300px;
-    max-width: 200px;
+    max-height:200px;
+    max-width: 166px;
 }
 .navitem {
     color: black;
@@ -57,8 +57,9 @@ table.prevguesses {
 .abovefooter {
     margin-top: auto;
 }
-header {
-height: fit-content;
+.about {
+    max-width: 400px;
+    align-self: center;
 }
 body {
     height: 100vh;
@@ -69,7 +70,12 @@ body {
     justify-content: center;
     text-align: center;
 }
+header {
+height: auto;
+}
 main {
+flex-grow: 1;
+overflow-y: auto;
 display: flex;
 flex-direction: column;
 flex-grow: 1;
@@ -78,8 +84,7 @@ align-content: center;
 }
 
 footer {
-    max-height: 100px;
-    height: fit-content;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -98,6 +103,7 @@ section.playboard {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    flex: 0 80px;
     align-items: center;
     margin: auto;
     border: 10px thin solid black;
