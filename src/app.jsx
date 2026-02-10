@@ -15,7 +15,7 @@ export default function App() {
         <h1 id="sitename">Actordle</h1>
         <nav>
             <menu className="navbar">
-                <li className="navitem"><NavLink className="navlink" to="login">Home</NavLink></li>
+                <li className="navitem"><NavLink className="navlink" to="">Home</NavLink></li>
                 <li className="navitem"><NavLink className="navlink" to="play">Play Actordle</NavLink></li>
                 <li className="navitem"><NavLink className="navlink" to="scores">Today's Leaderboard</NavLink></li>
                 <li className="navitem"><NavLink className="navlink-active" to="about">What is Actordle?</NavLink></li>
