@@ -112,9 +112,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - Minor changes made to accommodate CSS in a JSX format, but for the most part just reorganized existing elements to be compatible with vite.
+- [x] **Components** - Instead of 4 distinct HTML pages, the scores, leaderboard, about, and login pages are all now injected into the app.jsx.
+- [x] **Router** - Restructured HTML nav to allow for dynamic routing, keeping the header and footer the same for all pages and using NavLinks to inject main elements into the webapp.
 
 ## 🚀 React part 2: Reactivity deliverable
 
