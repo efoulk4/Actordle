@@ -4,7 +4,6 @@ import '../app.css';
 export function Play() {
   return (
     <main>
-      <div>
           <p>USERNAME</p>
             <section className="playboard">
                 <h2>Time Remaining: 1:30</h2>
@@ -39,7 +38,6 @@ export function Play() {
                 <h2>Friends Playing</h2>
                 <p>James just guessed his 5th correct movie for the day!</p>
             </section>
-      </div>
     </main>
   );
 }

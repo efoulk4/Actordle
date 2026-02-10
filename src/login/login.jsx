@@ -4,7 +4,6 @@ import '../app.css';
 export function Login() {
   return (
     <main>
-      <div>
         <h2>Login to play today's Actordle</h2>
             <form className="credentials" action="play.html" method="get">
                 <div>
@@ -34,7 +33,6 @@ export function Login() {
                 </div>
                 <button className="btn btn-secondary" type="submit">Create Account</button>
             </form>
-      </div>
     </main>
   );
 }

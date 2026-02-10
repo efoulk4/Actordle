@@ -4,7 +4,7 @@ import '../app.css';
 export function About() {
   return (
     <main>
-      <div>
+
         <h2>What is Actordle?</h2>
             <p  className="about">We've all met that one person who knows way too much about movies -- but how much do they really know?
             Actordle stretches your knowledge of cinema to the very limit by challenging users to name as many movies 
@@ -17,7 +17,6 @@ export function About() {
                 You may discover that some of your favorite actors/actresses are in films you never expected. Use this as
                 an opportunity to broaden your horizons and find some incredible new films!
             </p>
-      </div>
     </main>
   );
 }

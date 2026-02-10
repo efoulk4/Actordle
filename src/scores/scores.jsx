@@ -4,7 +4,6 @@ import '../app.css';
 export function Scores() {
   return (
     <main>
-      <div>
         <table id="lboard">
                 <thead>
                     <tr>
@@ -41,7 +40,6 @@ export function Scores() {
                     </tr>
                 </tbody>
             </table>
-      </div>
     </main>
   );
 }
