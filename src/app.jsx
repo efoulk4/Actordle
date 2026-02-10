@@ -11,14 +11,14 @@ export default function App() {
   return (
     <BrowserRouter>
   <div className="body bg-dark text-light">
-    <header ClassName="container fluid">
+    <header className="container fluid">
         <h1 id="sitename">Actordle</h1>
         <nav>
-            <menu ClassName="navbar">
-                <li ClassName="navitem"><NavLink ClassName="navlink" to="login">Home</NavLink></li>
-                <li ClassName="navitem"><NavLink ClassName="navlink" to="play">Play Actordle</NavLink></li>
-                <li ClassName="navitem"><NavLink ClassName="navlink" to="scores">Today's Leaderboard</NavLink></li>
-                <li ClassName="navitem"><NavLink ClassName="navlink-active" to="about">What is Actordle?</NavLink></li>
+            <menu className="navbar">
+                <li className="navitem"><NavLink className="navlink" to="login">Home</NavLink></li>
+                <li className="navitem"><NavLink className="navlink" to="play">Play Actordle</NavLink></li>
+                <li className="navitem"><NavLink className="navlink" to="scores">Today's Leaderboard</NavLink></li>
+                <li className="navitem"><NavLink className="navlink-active" to="about">What is Actordle?</NavLink></li>
             </menu>
         </nav>
         <hr />
