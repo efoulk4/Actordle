@@ -72,8 +72,8 @@ form[name="guessbox"] {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    color: slategrey;
-    background-color: beige;
+    color: #384859;
+    background-color: #BDDDFC;
     justify-content: center;
     text-align: center;
 }
