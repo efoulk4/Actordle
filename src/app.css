@@ -61,7 +61,7 @@ table.prevguesses {
     max-width: 400px;
     align-self: center;
 }
-body {
+.body {
     height: 100vh;
     display: flex;
     flex-direction: column;
