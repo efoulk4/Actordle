@@ -50,6 +50,13 @@ table.prevguesses {
     max-width: 400px;
     font-size: x-large;
 }
+form[name="guessbox"] {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
 .lrow {
     color: darkslateblue;
     font-size: 1.25em;
