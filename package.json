@@ -1,0 +1,26 @@
+{
+  "name": "actordle",
+  "version": "1.0.0",
+  "description": "This Application is a web game patterned after the many games fashioned after the famous \"Wordle.\" Users will be able to test their knowledge of cinema by naming as many movies a given actor/actress was featured in within a 1:30 time period. Results will be able to be shared, but will also be pushed to a live leaderboard, where scores from other users will be displayed.",
+  "main": "index.js",
+    "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efoulk4/Actordle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/efoulk4/Actordle/issues"
+  },
+  "homepage": "https://github.com/efoulk4/Actordle#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}
