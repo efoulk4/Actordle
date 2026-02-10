@@ -10,8 +10,8 @@ import { About } from './about/about';
 export default function App() {
   return (
     <BrowserRouter>
-  <div>
-    <header className="container fluid">
+  <div className="body">
+    <header>
         <h1 id="sitename">Actordle</h1>
         <nav>
             <menu className="navbar">
