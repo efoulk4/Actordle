@@ -3,7 +3,7 @@ import '../app.css';
 
 export function Scores() {
   return (
-    <main className="container-fluid bg-secondary text-center">
+    <main>
       <div>
         <table id="lboard">
                 <thead>

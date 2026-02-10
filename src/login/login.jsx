@@ -3,7 +3,7 @@ import '../app.css';
 
 export function Login() {
   return (
-    <main className="container-fluid bg-secondary text-center">
+    <main>
       <div>
         <h2>Login to play today's Actordle</h2>
             <form className="credentials" action="play.html" method="get">

@@ -3,7 +3,7 @@ import '../app.css';
 
 export function Play() {
   return (
-    <main className="container-fluid bg-secondary text-center">
+    <main>
       <div>
           <p>USERNAME</p>
             <section className="playboard">
@@ -12,14 +12,14 @@ export function Play() {
             </section>
             <section id="todaysactor">
                 <p>Today's Actor from TMDB is</p>
-                <h2 style="font-size: 1em;">TOM HANKS</h2>
+                <h2 style={{fontSize: '1em' }}>TOM HANKS</h2>
                 <img src="tomhanks.png" alt="image of Tom Hanks" className="actorimage" />
             </section>
-            <h3 style="font-size: smaller;">Was featured in...</h3>
+            <h3 style={{fontSize: 'smaller' }}>Was featured in...</h3>
             <table className="prevguesses">
                 <thead>
                     <tr>
-                        <td style="font-weight: bold; font-size: larger">MOVIES</td>
+                        <td style={{ fontWeight: 'bold', fontSize: 'larger' }}>MOVIES</td>
                     </tr>
                 </thead>
                 <tbody>

@@ -10,15 +10,15 @@ import { About } from './about/about';
 export default function App() {
   return (
     <BrowserRouter>
-  <div className="body bg-dark text-light">
+  <div>
     <header className="container fluid">
         <h1 id="sitename">Actordle</h1>
         <nav>
             <menu className="navbar">
                 <li className="navitem"><NavLink className="navlink" to="">Home</NavLink></li>
-                <li className="navitem"><NavLink className="navlink" to="play">Play Actordle</NavLink></li>
-                <li className="navitem"><NavLink className="navlink" to="scores">Today's Leaderboard</NavLink></li>
-                <li className="navitem"><NavLink className="navlink-active" to="about">What is Actordle?</NavLink></li>
+                <li className="navitem"><NavLink className="navlink" to="/play">Play Actordle</NavLink></li>
+                <li className="navitem"><NavLink className="navlink" to="/scores">Today's Leaderboard</NavLink></li>
+                <li className="navitem"><NavLink className="navlink" to="/about">What is Actordle?</NavLink></li>
             </menu>
         </nav>
         <hr />

@@ -3,7 +3,7 @@ import '../app.css';
 
 export function About() {
   return (
-    <main className="container-fluid bg-secondary text-center">
+    <main>
       <div>
         <h2>What is Actordle?</h2>
             <p  className="about">We've all met that one person who knows way too much about movies -- but how much do they really know?
