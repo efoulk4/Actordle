@@ -2,11 +2,12 @@ import React from 'react';
 import '../app.css';
 
 export function Login() {
-    const [user, setUser] = React.useState(null);
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
 
     function register(event){
-        event.preventdefault();
+        event.preventDefault();
 
     }
 
@@ -15,8 +16,8 @@ export function Login() {
         <h2>Login to play today's Actordle</h2>
             <form onSubmit={register} className="credentials" action="play.html" method="get">
                 <div>
-                    <span>Username</span>
-                    <input type="text" name="Username" placeholder="Username" required />
+                    <span>Email</span>
+                    <input type="email" name="Email" placeholder="Email" required />
                 </div>
                 <div>
                     <span>Password</span>
