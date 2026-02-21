@@ -1,7 +1,12 @@
 import React from 'react';
 import '../app.css';
+import { useNavigate } from 'react-router-dom';
+import { getTodaysActor } from '../service';
 
 export function Play() {
+ const todaysActor = getTodaysActor();
+
+
   return (
     <main>
           <p>USERNAME</p>
@@ -11,8 +16,8 @@ export function Play() {
             </section>
             <section id="todaysactor">
                 <p>Today's Actor from TMDB is</p>
-                <h2 style={{fontSize: '1em' }}>TOM HANKS</h2>
-                <img src="tomhanks.png" alt="image of Tom Hanks" className="actorimage" />
+                <h2 style={{fontSize: '1em' }}>{todaysActor.name}</h2>
+                <img src={todaysActor.image} alt={`image of ${todaysActor.name}`} className="actorimage" />
             </section>
             <h3 style={{fontSize: 'smaller' }}>Was featured in...</h3>
             <table className="prevguesses">
