@@ -30,7 +30,7 @@ export function Login() {
   return (
     <main>
         <h2>Login to play today's Actordle</h2>
-            <form onSubmit={login} className="credentials" action="play.html" method="get">
+            <form onSubmit={login} className="credentials">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setEmail(e.target.value)}/>
@@ -43,7 +43,7 @@ export function Login() {
             </form>
             <br />
             <h2>Don't have an account?</h2>
-            <form onSubmit={register} className="credentials" action="play.html" method="get">
+            <form onSubmit={register} className="credentials">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setEmail(e.target.value)}/>
