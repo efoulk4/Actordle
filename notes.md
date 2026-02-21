@@ -112,3 +112,14 @@ Handling the toggling of the checkboxes was particularly interesting.
   ))}
 </div>
 ```
+
+## JS and JSX
+
+### Promises and Asynchronous Design
+
+Promise States:
+pending - Currently running asynchronously
+fulfilled - Completed successfully
+rejected - Failed to complete
+
+Single Thread Java vs. Web API call pool
