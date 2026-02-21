@@ -1,5 +1,4 @@
 export const actors = [
-  [
     {
         name: "Brad Pitt",
         image: "https://image.tmdb.org/t/p/original/cckcYc2v0yh1tc9QjRelptcOBko.jpg",
@@ -50,7 +49,6 @@ export const actors = [
         image: "https://image.tmdb.org/t/p/original/cZ8a3QvAnj2cgcgVL6g4XaqPzpL.jpg",
         movies: ["La La Land", "The Help", "Easy A"]
     }
-]
 ];
 
 export function getTodaysActor() {
