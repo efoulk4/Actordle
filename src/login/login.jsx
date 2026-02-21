@@ -2,10 +2,18 @@ import React from 'react';
 import '../app.css';
 
 export function Login() {
+    const [user, setUser] = React.useState(null);
+
+
+    function register(event){
+        event.preventdefault();
+
+    }
+
   return (
     <main>
         <h2>Login to play today's Actordle</h2>
-            <form className="credentials" action="play.html" method="get">
+            <form onSubmit={register} className="credentials" action="play.html" method="get">
                 <div>
                     <span>Username</span>
                     <input type="text" name="Username" placeholder="Username" required />
