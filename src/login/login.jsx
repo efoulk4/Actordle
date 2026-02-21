@@ -10,6 +10,7 @@ export function Login() {
     function register(event){
         event.preventDefault();
         registerUser(email, password);
+            //add code to redirect to play page
     }
 
     function login(event){
@@ -29,28 +30,28 @@ export function Login() {
             <form onSubmit={login} className="credentials" action="play.html" method="get">
                 <div>
                     <span>Email</span>
-                    <input type="email" name="Email" placeholder="Email" required />
+                    <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div>
                     <span>Password</span>
-                    <input type="password" name="Password" placeholder="Password" required />
+                    <input type="password" name="Password" placeholder="Password" required onChange ={(e) => setPassword(e.target.value)}/>
                 </div>
                 <button className="btn btn-primary" type="submit">Login</button>
             </form>
             <br />
             <h2>Don't have an account?</h2>
-            <form className="credentials" action="play.html" method="get">
+            <form onSubmit={register} className="credentials" action="play.html" method="get">
                 <div>
-                    <span>Username</span> 
-                    <input type="text" placeholder="Username" required />
+                    <span>Email</span>
+                    <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div>
                     <span>Password</span>
-                    <input type="password" placeholder="Password" required />
+                    <input type="password" name="Password" placeholder="Password" required onChange ={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div>
                     <span>Confirm Password</span>
-                    <input type="password" placeholder=" Password" required />
+                    <input type="password" name="ConfirmPassword" placeholder="Password" required onChange ={(e) => setConfirmPassword(e.target.value)}/>
                 </div>
                 <button className="btn btn-secondary" type="submit">Create Account</button>
             </form>
