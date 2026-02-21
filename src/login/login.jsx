@@ -1,4 +1,5 @@
 import React from 'react';
+import { registerUser, loginUser } from '../service';
 import '../app.css';
 
 export function Login() {
@@ -8,13 +9,24 @@ export function Login() {
 
     function register(event){
         event.preventDefault();
+        registerUser(email, password);
+    }
 
+    function login(event){
+        event.preventDefault();
+        const user = loginUser(email, password);
+        if(!user){
+            alert('Invalid email or password');
+        }
+        else{
+            //add code to redirect to play page
+        }
     }
 
   return (
     <main>
         <h2>Login to play today's Actordle</h2>
-            <form onSubmit={register} className="credentials" action="play.html" method="get">
+            <form onSubmit={login} className="credentials" action="play.html" method="get">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required />
