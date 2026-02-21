@@ -1,17 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { registerUser, loginUser } from '../service';
 import '../app.css';
 
 export function Login() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const navigate = useNavigate();
+
 
 
     function register(event){
         event.preventDefault();
         registerUser(email, password);
-            //add code to redirect to play page
-    }
+        navigate('/play');
+        }
 
     function login(event){
         event.preventDefault();
@@ -20,7 +23,7 @@ export function Login() {
             alert('Invalid email or password');
         }
         else{
-            //add code to redirect to play page
+            navigate('/play');
         }
     }
 
