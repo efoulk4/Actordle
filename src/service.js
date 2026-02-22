@@ -51,7 +51,7 @@ export const actors = [
     }
 ];
 
-function countdown(){
+export function countdown(){
         const [secondsLeft, setSecondsLeft] = React.useState(90);
         const [timerState, setTimerState] = React.useState(null);
      function startCountdown() {
@@ -68,7 +68,11 @@ function countdown(){
                 return prev-1;
             })
         }, 1000) // one second increments
-        
+    setTimerState(id);
+    }
+    function formatTime(seconds){
+        const minutes = Math.floor(seconds / 60);
+        const seconds = seconds % 60;
     }
 
 }
