@@ -7,6 +7,8 @@ export function Play() {
  const [todaysActor] = React.useState(getTodaysActor());
  const [secondsLeft, setSecondsLeft] = React.useState(90);
  const [currentGuess, setCurrentGuess] = React.useState('');
+ const [currentScore, setCurrentScore] = React.useState(0);
+ const [guessedMovies, setGuessedMovies] = React.useState([]);
 
  useEffect(() => {
  const id = setInterval(() => {
@@ -24,7 +26,11 @@ export function Play() {
 
     function handleGuess(event){
         event.preventDefault();
-        
+        if (todaysActor.movies.includes(currentGuess)){
+            setCurrentScore(currentScore+1);
+            setGuessedMovies(guessedMovies.push(currentGuess));
+        }
+        setCurrentGuess('');
     }
 
 
