@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../app.css';
 import { useNavigate } from 'react-router-dom';
 import { getTodaysActor } from '../service';
 
 export function Play() {
  const todaysActor = getTodaysActor();
+ const [secondsLeft, setSecondsLeft] = React.useState(90);
+
+ useEffect(() => {
+ const id = setInterval(() => {
+            setSecondsLeft((prev) => {
+                if (prev <= 1) {
+                    clearInterval(); //stop timer
+                    setTimerId(null); //identify expired timer
+                    return 0; //so if seconds == 0 then the timer has expired
+                }
+                return prev-1;
+            })
+        }, 1000); // one second increments
+
+        return () => clearInterval(id);
+    }, [])
 
 
   return (

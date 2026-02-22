@@ -51,38 +51,6 @@ export const actors = [
     }
 ];
 
-export function countdown(){
-        const [secondsLeft, setSecondsLeft] = React.useState(90);
-        const [timerState, setTimerState] = React.useState(null);
-     function startCountdown() {
-        if (timerState) {
-            return;
-        }
-        const id = setInterval(() => {
-            setSecondsLeft((prev) => {
-                if (prev <= 1) {
-                    clearInterval(); //stop timer
-                    setTimerId(null); //identify expired timer
-                    return 0; //so if seconds == 0 then the timer has expired
-                }
-                return prev-1;
-            })
-        }, 1000) // one second increments
-    setTimerState(id);
-    }
-    function formatTime(t){
-        const minutes = Math.floor(t / 60);
-        const seconds = t % 60;
-        if (seconds < 10){
-            return `${minutes}:0${seconds}`;
-        }
-        else{
-            return `${minutes}:${seconds}`;    
-        }
-    }
-
-}
-
 export function getTodaysActor() {
     const random = Math.floor(Math.random() * actors.length);
     return actors[random];
@@ -102,62 +70,12 @@ export function loginUser(email, password) {
 
   return users.find(u => u.email === email && u.password === password);}
 
-
-
-
-  import React, { useState } from 'react';
-
-function CountdownTimer() {
-  // Start at 90 seconds (1:30)
-  const [secondsLeft, setSecondsLeft] = useState(90);
-  const [timerId, setTimerId] = useState(null);
-
-  const startCountdown = () => {
-    // Prevent starting multiple timers at once
-    if (timerId) return;
-
-    const id = setInterval(() => {
-      setSecondsLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(id); // Stop the clock at zero
-          setTimerId(null);
-          return 0;
+export function formatTime(t){
+        const minutes = Math.floor(t / 60);
+        const seconds = t % 60;
+        if (seconds < 10){
+            return `Time Remaining: ${minutes}:0${seconds}`;
         }
-        return prev - 1;
-      });
-    }, 1000);
-
-    setTimerId(id);
-  };
-
-  const stopCountdown = () => {
-    clearInterval(timerId);
-    setTimerId(null);
-  };
-
-  // Helper to turn 90 into "1:30"
-  const formatTime = (time) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    // adds a leading zero if seconds are less than 10 (e.g., 1:09)
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
-
-  return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>{formatTime(secondsLeft)}</h1>
-      
-      {!timerId ? (
-        <button onClick={startCountdown}>Start</button>
-      ) : (
-        <button onClick={stopCountdown}>Pause</button>
-      )}
-      
-      <button onClick={() => { stopCountdown(); setSecondsLeft(90); }}>
-        Reset
-      </button>
-    </div>
-  );
-}
-
-export default CountdownTimer;
+        else{
+            return `Time Remaining: ${minutes}:${seconds}`;    
+        }}
