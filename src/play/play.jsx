@@ -6,6 +6,7 @@ import { getTodaysActor, formatTime } from '../service';
 export function Play() {
  const [todaysActor] = React.useState(getTodaysActor());
  const [secondsLeft, setSecondsLeft] = React.useState(90);
+ const [currentGuess, setCurrentGuess] = React.useState('');
 
  useEffect(() => {
  const id = setInterval(() => {
@@ -21,8 +22,8 @@ export function Play() {
         return () => clearInterval(id);
     }, [])
 
-    function handleGuess(){
-        preventDefault();
+    function handleGuess(event){
+        event.preventDefault();
         
     }
 
@@ -56,7 +57,7 @@ export function Play() {
                 </tbody>
             </table>
             <form name="guessbox" onSubmit={handleGuess}>
-            <input type="text" placeholder="Movie" />
+            <input type="text" placeholder="Movie" value={currentGuess} onChange={(e) => setCurrentGuess(e.target.value)}/>
             <button className="btn btn-primary btn-lg" type="submit">Submit Guess</button>
             </form>
             <section className="abovefooter">
