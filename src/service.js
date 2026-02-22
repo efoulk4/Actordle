@@ -70,9 +70,15 @@ export function countdown(){
         }, 1000) // one second increments
     setTimerState(id);
     }
-    function formatTime(seconds){
-        const minutes = Math.floor(seconds / 60);
-        const seconds = seconds % 60;
+    function formatTime(t){
+        const minutes = Math.floor(t / 60);
+        const seconds = t % 60;
+        if (seconds < 10){
+            return `${minutes}:0${seconds}`;
+        }
+        else{
+            return `${minutes}:${seconds}`;    
+        }
     }
 
 }
