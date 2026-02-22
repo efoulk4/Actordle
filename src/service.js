@@ -61,11 +61,13 @@ function countdown(){
         const id = setInterval(() => {
             setSecondsLeft((prev) => {
                 if (prev <= 1) {
-                    clearInterval();
-                    setTimerId(null);
+                    clearInterval(); //stop timer
+                    setTimerId(null); //identify expired timer
+                    return 0; //so if seconds == 0 then the timer has expired
                 }
+                return prev-1;
             })
-        })
+        }, 1000) // one second increments
         
     }
 
