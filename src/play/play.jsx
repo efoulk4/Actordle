@@ -14,7 +14,7 @@ export function Play() {
  const id = setInterval(() => {
             setSecondsLeft((prev) => {
                 if (prev <= 1) {
-                    clearInterval(); //stop timer
+                    clearInterval(id); //stop timer
                     return 0; //so if secondsLeft == 0 then the timer has expired
                 }
                 return prev-1;
@@ -28,7 +28,7 @@ export function Play() {
         event.preventDefault();
         if (todaysActor.movies.includes(currentGuess)){
             setCurrentScore(currentScore+1);
-            setGuessedMovies(guessedMovies.push(currentGuess));
+            setGuessedMovies([...guessedMovies,currentGuess]);
         }
         setCurrentGuess('');
     }
@@ -54,12 +54,12 @@ export function Play() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Forrest Gump</td>
-                    </tr>
-                    <tr>
-                        <td>Apollo 13</td>
-                    </tr>
+                    {guessedMovies.map((movie, index) => (
+                        <tr key={index}>
+                            <td>{movie}</td>
+                        </tr>
+                    )
+                    )}
                 </tbody>
             </table>
             <form name="guessbox" onSubmit={handleGuess}>
