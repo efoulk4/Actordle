@@ -52,9 +52,13 @@ export const actors = [
 ];
 
 export function getTodaysActor() {
-    const random = Math.floor(Math.random() * actors.length);
-    return actors[random];
-  }
+    const today = new Date();
+    const start = new Date(2026, 0, 1); // Jan 1, 2026
+    const diffTime = today - start;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const index = diffDays % actors.length;
+    return actors[index];
+}
 
 
 
