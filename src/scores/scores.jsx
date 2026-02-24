@@ -2,6 +2,7 @@ import React from 'react';
 import '../app.css';
 
 export function Scores() {
+    const score = JSON.parse((localStorage.getItem('scores') || '[]'));
   return (
     <main>
         <table id="lboard">
@@ -13,31 +14,21 @@ export function Scores() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="lrow">
-                        <td>1</td>
-                        <td>James</td>
-                        <td>8</td>
+                  {score.length === 0 || score.filter(u => u.name && u.score !== undefined).length === 0 ? (
+                    <tr>
+                    <td colSpan="3" style={{ textAlign: "center" }}>
+                        Play a round to display your scores
+                    </td>
                     </tr>
-                    <tr className="lrow">
-                        <td>2</td>
-                        <td>William</td>
-                        <td>7</td>
+                ) : (
+                    score.map((user, index) => (
+                    <tr className='lrow' key={index}>
+                        <td>{index + 1}</td>
+                        <td>{user.name}</td>
+                        <td>{user.score}</td>
                     </tr>
-                    <tr className="lrow">
-                        <td>3</td>
-                        <td>Jill</td>
-                        <td>7</td>
-                    </tr>
-                    <tr className="lrow">
-                        <td>4</td>
-                        <td>Emily</td>
-                        <td>5</td>
-                    </tr>
-                    <tr className="lrow">
-                        <td>5</td>
-                        <td>Seth</td>
-                        <td>4</td>
-                    </tr>
+                    ))
+                )}
                 </tbody>
             </table>
     </main>

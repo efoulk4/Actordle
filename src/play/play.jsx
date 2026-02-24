@@ -30,7 +30,7 @@ export function Play() {
  useEffect(() => {
     if (secondsLeft == 0) {
         const score = JSON.parse((localStorage.getItem('scores') || '[]'));
-        score.push({user: username, score: currentScore});
+        score.push({name: username, score: currentScore});
         localStorage.setItem('scores', JSON.stringify(score))
         navigate("/scores");
     }
