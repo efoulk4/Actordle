@@ -10,6 +10,8 @@ export function Play() {
  const [currentGuess, setCurrentGuess] = React.useState('');
  const [currentScore, setCurrentScore] = React.useState(0);
  const [guessedMovies, setGuessedMovies] = React.useState([]);
+ const username = localStorage.getItem('currentUser') || 'Guest';
+ const navigate = useNavigate();
 
  useEffect(() => {
  const id = setInterval(() => {
@@ -24,9 +26,13 @@ export function Play() {
 
         return () => clearInterval(id);
     }, [])
+
  useEffect(() => {
     if (secondsLeft == 0) {
-        Navigate("/scores");
+        const score = JSON.parse((localStorage.getItem('scores') || '[]'));
+        score.push({user: username, score: currentScore});
+        localStorage.setItem('scores', JSON.stringify(score))
+        navigate("/scores");
     }
  }, [secondsLeft, navigate]
 );
@@ -43,7 +49,7 @@ export function Play() {
 
   return (
     <main>
-          <p>USERNAME</p>
+          <p>{username}</p>
             <section className="playboard">
                 <h2>{formatTime(secondsLeft)}</h2>
                 <img src="Camera.png" height="150" width="150" alt="Film Camera" />

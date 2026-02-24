@@ -13,6 +13,7 @@ export function Login() {
     function register(event){
         event.preventDefault();
         registerUser(email, password);
+        localStorage.setItem('currentUser', (email));
         navigate('/play');
         }
 
@@ -23,6 +24,7 @@ export function Login() {
             alert('Invalid email or password');
         }
         else{
+            localStorage.setItem('currentUser', (email));
             navigate('/play');
         }
     }
