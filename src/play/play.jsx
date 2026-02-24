@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import '../app.css';
 import { useNavigate } from 'react-router-dom';
 import { getTodaysActor, formatTime } from '../service';
+import { use } from 'react';
 
 export function Play() {
  const [todaysActor] = React.useState(getTodaysActor());
@@ -23,6 +24,12 @@ export function Play() {
 
         return () => clearInterval(id);
     }, [])
+ useEffect(() => {
+    if (secondsLeft == 0) {
+        Navigate("/scores");
+    }
+ }, [secondsLeft, navigate]
+);
 
     function handleGuess(event){
         event.preventDefault();
