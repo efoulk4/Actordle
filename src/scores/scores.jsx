@@ -14,10 +14,10 @@ export function Scores() {
                     </tr>
                 </thead>
                 <tbody>
-                  {score.length === 0 || score.filter(u => u.name && u.score !== undefined).length === 0 ? (
+                  {score.length === 0 ? (
                     <tr>
                     <td colSpan="3" style={{ textAlign: "center" }}>
-                        Play a round to display your scores
+                        Play a round to display your scores!
                     </td>
                     </tr>
                 ) : (
