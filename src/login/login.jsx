@@ -1,19 +1,27 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerUser, loginUser } from '../service';
+import { AuthState } from './authstate';
 import '../app.css';
 
 export function Login({ userName, authState, onAuthChange }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [confirmPassword, setConfirmPassword] = React.useState('');
     const navigate = useNavigate();
 
 
 
     function register(event){
         event.preventDefault();
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
         registerUser(email, password);
-        localStorage.setItem('currentUser', (email));
+        localStorage.setItem('currentUser', email);
+        // inform parent about the new authenticated user
+        onAuthChange(email, AuthState.Authenticated);
         navigate('/play');
         }
 
@@ -24,7 +32,9 @@ export function Login({ userName, authState, onAuthChange }) {
             alert('Invalid email or password');
         }
         else{
-            localStorage.setItem('currentUser', (email));
+            localStorage.setItem('currentUser', email);
+            // propagate auth change to parent
+            onAuthChange(email, AuthState.Authenticated);
             navigate('/play');
         }
     }
