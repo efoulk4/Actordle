@@ -20,17 +20,17 @@
     max-width: 166px;
 }
 .navitem {
-    color: black;
+    color: #2c3e50; /* dark slate blue for text */
     padding: 0;
 }
 .navlink { 
-    color: black;
+    color: #2c3e50;
 }
 .navlink:hover {
-    color: rgba(81, 72, 72, 0.38);
+    color: #3498db; /* light blue hover */
 }
 .navlink-active{
-    color: grey;
+    color: #2980b9; /* stronger blue for active link */
 }
 table.prevguesses {
     margin-left: auto;
@@ -40,7 +40,7 @@ table.prevguesses {
     justify-content: flex-start;
 }
 #lboard{
-    color: black;
+    color: #2c3e50;
     margin-left: auto;
     margin-right: auto;
     align-content: center;
@@ -58,7 +58,7 @@ form[name="guessbox"] {
     justify-content: center;
 }
 .lrow {
-    color: darkslateblue;
+    color: #2980b9; /* blue accent for leaderboard rows */
     font-size: 1.25em;
 }
 .abovefooter {
@@ -72,8 +72,8 @@ form[name="guessbox"] {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    color: #384859;
-    background-color: #BDDDFC;
+    color: #333333; /* darker text for readability */
+    background-color: #f0f4f8; /* soft off-white background */
     justify-content: center;
     text-align: center;
 }
