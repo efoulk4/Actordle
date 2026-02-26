@@ -51,7 +51,7 @@ export function Game(props) {
 
 
   return (
-    <main>
+    <section>
           <p>{username}</p>
             <section className="playboard">
                 <h2>{formatTime(secondsLeft)}</h2>
@@ -82,6 +82,6 @@ export function Game(props) {
             <input type="text" placeholder="Movie" value={currentGuess} onChange={(e) => setCurrentGuess(e.target.value)}/>
             <button className="btn btn-primary btn-lg" type="submit">Submit Guess</button>
             </form>
-    </main>
+    </section>
   );
 }

@@ -106,9 +106,7 @@ footer {
     margin-right: auto;
     width: 200px;
 }
-section.playboard {
-    display: flex;
-    flex-direction: row;
+.playboard {
     flex: 0 80px;
     align-items: center;
     margin-left: auto;
