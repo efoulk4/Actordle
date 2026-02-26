@@ -8,6 +8,10 @@ import { Scores } from './scores/scores';
 import { About } from './about/about';
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return (
     <BrowserRouter>
   <div className="body">
@@ -27,8 +31,14 @@ export default function App() {
 
 
     <Routes>
-        <Route path='/' element={<Login />} exact />
-        <Route path='/play' element={<Play />} />
+        <Route path='/' element={<Login
+        userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }} />} exact />
+        <Route path='/play' element={<Play username={userName} />} />
         <Route path='/scores' element={<Scores />} />
         <Route path='/about' element={<About />} />
         <Route path='*' element={<NotFound />} />

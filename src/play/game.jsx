@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getTodaysActor, formatTime } from '../service';
 import { use } from 'react';
 
-export function Play(props) {
+export function Game(props) {
  const [todaysActor] = React.useState(getTodaysActor());
  const [secondsLeft, setSecondsLeft] = React.useState(90);
  const [currentGuess, setCurrentGuess] = React.useState('');
@@ -79,10 +79,6 @@ export function Play(props) {
             <input type="text" placeholder="Movie" value={currentGuess} onChange={(e) => setCurrentGuess(e.target.value)}/>
             <button className="btn btn-primary btn-lg" type="submit">Submit Guess</button>
             </form>
-            <section className="abovefooter">
-                <h2>Friends Playing</h2>
-                <p>James just guessed his 5th correct movie for the day!</p>
-            </section>
     </main>
   );
 }
