@@ -120,8 +120,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - The application is ready to have both database and websocket implementation -- the database protocols are currently being simulated via localstorage and the websocket portion of the play page is being mocked out using setInterval
+- [x] **Hooks** - useEffect and useState are in ample supply throughout the project.
 
 ## 🚀 Service deliverable
 
