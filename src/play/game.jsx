@@ -31,6 +31,9 @@ export function Game(props) {
     if (secondsLeft == 0) {
         const score = JSON.parse((localStorage.getItem('scores') || '[]'));
         score.push({name: username, score: currentScore});
+        if (score.length > 5) {
+        score.length = 5; //keep only top 5 scores
+        }
         localStorage.setItem('scores', JSON.stringify(score))
         navigate("/scores");
     }
