@@ -2,7 +2,33 @@ import React from 'react';
 import '../app.css';
 
 export function Scores() {
-    const score = JSON.parse((localStorage.getItem('scores') || '[]'));
+    const [scores, setScores] = React.useState([]);
+
+
+    React.useEffect(() => {
+        const jsonScores = JSON.parse(localStorage.getItem('scores') || '[]');
+        const sortedScores = jsonScores.sort((a, b) => b.score - a.score);
+        setScores(sortedScores);
+    }, []);
+
+      const scoreRows = [];
+  if (scores.length) {
+    for (const [i, score] of scores.entries()) {
+      scoreRows.push(
+        <tr className='lrow' key={i}>
+          <td>{i+1}</td>
+          <td>{score.name.split('@')[0]}</td>
+          <td>{score.score}</td>
+        </tr>
+      );
+    }
+  } else {
+    scoreRows.push(
+      <tr key='0'>
+        <td colSpan='4'>Be the first to score</td>
+      </tr>
+    );
+  }
   return (
     <main>
         <table id="lboard">
@@ -14,21 +40,7 @@ export function Scores() {
                     </tr>
                 </thead>
                 <tbody>
-                  {score.length === 0 ? (
-                    <tr>
-                    <td colSpan="3" style={{ textAlign: "center" }}>
-                        Play a round to display your scores!
-                    </td>
-                    </tr>
-                ) : (
-                    score.map((user, index) => (
-                    <tr className='lrow' key={index}>
-                        <td>{index + 1}</td>
-                        <td>{user.name}</td>
-                        <td>{user.score}</td>
-                    </tr>
-                    ))
-                )}
+                    {scoreRows}
                 </tbody>
             </table>
     </main>
