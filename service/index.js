@@ -29,6 +29,27 @@ apiRouter.post("/auth/create", async (req, res) => {
     }
 })
 
+apiRouter.post("/auth/login", async(req, res) => {
+    const user = findUser("email", req.body.email)
+    if (user){
+        if(bcrypt.compare(req.body.password, user.password)){
+            user.token = uuid.v4();
+            setAuthCookie(res, user.token);
+            return;
+        }
+    }
+    res.status(401).send({msg: "Invalid email or password"});
+})
+
+apiRouter.delete("/auth/logout", async(req, res) => {
+    const user = await findUser("token", req.cookies[authCookieName])
+    if (user){
+        delete user.token;
+    }
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+})
+
 
 
 
