@@ -115,6 +115,8 @@ Handling the toggling of the checkboxes was particularly interesting.
 
 ## JS and JSX
 
+I was originally very confused as to why ternary operators and conjunctions to trigger conditional rendering. and then ir realized how much more convenient it was compared to handling it outside of the return.
+
 ### Promises and Asynchronous Design
 
 Promise States:
