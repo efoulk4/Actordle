@@ -20,8 +20,13 @@ let scores = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-const TMDB_API_KEY = 'YOUR_TMDB_API_KEY';
-const BASE_URL = 'https://api.themoviedb.org/3';
+
+app.use(express.static('public'));
+app.use(express.json());
+app.use(cookieParser());
+
+var apiRouter = express.Router();
+app.use(`/api`, apiRouter);
 
 apiRouter.get("/actor", async (req, res) => {
     try {
@@ -73,20 +78,13 @@ apiRouter.get("/actor", async (req, res) => {
       personIndex++; 
     }
 
-    return selectedActor;
+    res.send(selectedActor);
+    return;
   } catch (err) {
     console.error("Fetch Error:", err);
-    return null;
+    return res.status(404).json({ error: "No actor found" });
   }
 })
-
-app.use(express.static('public'));
-app.use(express.json());
-app.use(cookieParser());
-
-var apiRouter = express.Router();
-app.use(`/api`, apiRouter);
-
 apiRouter.post("/auth/create", async (req, res) => {    
     if(findUser('email', req.body.email)){
         res.status(409).send({msg: "Existing User"})
