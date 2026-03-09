@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import '../app.css';
 import { useNavigate } from 'react-router-dom';
-import { use } from 'react';
-import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
 
 function formatTime(t){
         const minutes = Math.floor(t / 60);
