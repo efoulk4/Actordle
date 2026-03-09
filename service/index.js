@@ -25,52 +25,59 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 apiRouter.get("/actor", async (req, res) => {
     try {
-        const today = new Date();
-        const start = new Date(2026, 0, 1);
-        const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+    const today = new Date();
+    const start = new Date(2026, 0, 1);
+    const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
 
-        const page = Math.floor(diffDays / 20) + 1;
-        const popularRes = await fetch(`${BASE_URL}/person/popular?api_key=${TMDB_API_KEY}&page=${page}`);
-        const popularData = await popularRes.json();
+    // Page updates every 20 days to keep the actor pool fresh
+    const page = Math.floor(diffDays / 20) + 1;
+    
+    // 1. Fetch Popular People
+    const popularRes = await fetch(
+      `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`, 
+      options
+    );
+    const popularData = await popularRes.json();
 
-        let personIndex = diffDays % 20;
-        let selectedActor = null;
+    let personIndex = diffDays % 20;
+    let selectedActor = null;
 
-        while (!selectedActor && personIndex < popularData.results.length) {
-            const candidate = popularData.results[personIndex];
+    // 2. Validation Loop
+    while (!selectedActor && personIndex < popularData.results.length) {
+      const candidate = popularData.results[personIndex];
 
-            if (
-                candidate.known_for_department === "Acting" && 
-                candidate.profile_path && 
-                candidate.popularity > 10 
-            ) {
-                const detailRes = await fetch(
-                    `${BASE_URL}/person/${candidate.id}?api_key=${TMDB_API_KEY}&append_to_response=movie_credits`
-                );
-                const detailData = await detailRes.json();
+      // Filtering for "Real" Actors with headshots
+      if (candidate.known_for_department === "Acting" && candidate.profile_path) {
+        
+        // 3. Fetch Full Credits using your options format
+        const detailRes = await fetch(
+          `https://api.themoviedb.org/3/person/${candidate.id}?append_to_response=movie_credits`, 
+          options
+        );
+        const detailData = await detailRes.json();
 
-                const validMovies = detailData.movie_credits.cast.filter(m => 
-                    m.character && 
-                    !m.character.toLowerCase().includes('self')
-                );
+        // Filter for actual movie roles (ignoring "Self" or "Uncredited")
+        const validMovies = detailData.movie_credits.cast.filter(m => 
+          m.character && 
+          !m.character.toLowerCase().includes('self')
+        );
 
-                if (validMovies.length >= 5) {
-                    selectedActor = {
-                        name: detailData.name,
-                        image: `https://image.tmdb.org/t/p/original${detailData.profile_path}`,
-                        movies: [...new Set(validMovies.map(m => m.title))] 
-                    };
-                }
-            }
-            personIndex++;
+        if (validMovies.length >= 5) {
+          selectedActor = {
+            name: detailData.name,
+            image: `https://image.tmdb.org/t/p/original${detailData.profile_path}`,
+            movies: [...new Set(validMovies.map(m => m.title))]
+          };
         }
-
-        return selectedActor;
-
-    } catch (error) {
-        console.error("Filtering Error:", error);
-        return null;
+      }
+      personIndex++; 
     }
+
+    return selectedActor;
+  } catch (err) {
+    console.error("Fetch Error:", err);
+    return null;
+  }
 })
 
 app.use(express.static('public'));
