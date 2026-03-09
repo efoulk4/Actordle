@@ -18,3 +18,24 @@ app.use(cookieParser());
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+apiRouter.post()
+
+
+
+
+
+
+
+
+
+
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 365,
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
