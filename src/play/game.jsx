@@ -3,15 +3,24 @@ import '../app.css';
 import { useNavigate } from 'react-router-dom';
 import { getTodaysActor, formatTime } from '../service';
 import { use } from 'react';
+import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
 
 export function Game(props) {
- const [todaysActor] = React.useState(getTodaysActor());
+ const [todaysActor, setTodaysActor] = React.useState(null);
  const [secondsLeft, setSecondsLeft] = React.useState(90);
  const [currentGuess, setCurrentGuess] = React.useState('');
  const [currentScore, setCurrentScore] = React.useState(0);
  const [guessedMovies, setGuessedMovies] = React.useState([]);
  const username = props.username || 'Guest';
  const navigate = useNavigate();
+
+ useEffect(() => {
+    fetch("/api/actor")
+    .then((response) => response.json())
+    .then((response) => {
+        setTodaysActor(response);
+    })
+ }, [])
 
  useEffect(() => {
  const id = setInterval(() => {
