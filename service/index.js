@@ -12,6 +12,59 @@ let scores = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
+const TMDB_API_KEY = 'YOUR_TMDB_API_KEY';
+const BASE_URL = 'https://api.themoviedb.org/3';
+
+apiRouter.get("/actor", async (req, res) => {
+    try {
+        const today = new Date();
+        const start = new Date(2026, 0, 1);
+        const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+
+        const page = Math.floor(diffDays / 20) + 1;
+        const popularRes = await fetch(`${BASE_URL}/person/popular?api_key=${TMDB_API_KEY}&page=${page}`);
+        const popularData = await popularRes.json();
+
+        let personIndex = diffDays % 20;
+        let selectedActor = null;
+
+        while (!selectedActor && personIndex < popularData.results.length) {
+            const candidate = popularData.results[personIndex];
+
+            if (
+                candidate.known_for_department === "Acting" && 
+                candidate.profile_path && 
+                candidate.popularity > 10 
+            ) {
+                const detailRes = await fetch(
+                    `${BASE_URL}/person/${candidate.id}?api_key=${TMDB_API_KEY}&append_to_response=movie_credits`
+                );
+                const detailData = await detailRes.json();
+
+                const validMovies = detailData.movie_credits.cast.filter(m => 
+                    m.character && 
+                    !m.character.toLowerCase().includes('self')
+                );
+
+                if (validMovies.length >= 5) {
+                    selectedActor = {
+                        name: detailData.name,
+                        image: `https://image.tmdb.org/t/p/original${detailData.profile_path}`,
+                        movies: [...new Set(validMovies.map(m => m.title))] 
+                    };
+                }
+            }
+            personIndex++;
+        }
+
+        return selectedActor;
+
+    } catch (error) {
+        console.error("Filtering Error:", error);
+        return null;
+    }
+})
+
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
