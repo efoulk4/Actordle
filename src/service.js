@@ -73,13 +73,3 @@ export function loginUser(email, password) {
     const users = JSON.parse((localStorage.getItem('users') || '[]'));
 
   return users.find(u => u.email === email && u.password === password);}
-
-export function formatTime(t){
-        const minutes = Math.floor(t / 60);
-        const seconds = t % 60;
-        if (seconds < 10){
-            return `Time Remaining: ${minutes}:0${seconds}`;
-        }
-        else{
-            return `Time Remaining: ${minutes}:${seconds}`;    
-        }}

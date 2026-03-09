@@ -1,9 +1,18 @@
 import React, { useEffect } from 'react';
 import '../app.css';
 import { useNavigate } from 'react-router-dom';
-import { getTodaysActor, formatTime } from '../service';
 import { use } from 'react';
 import { responsivePropType } from 'react-bootstrap/esm/createUtilityClasses';
+
+function formatTime(t){
+        const minutes = Math.floor(t / 60);
+        const seconds = t % 60;
+        if (seconds < 10){
+            return `Time Remaining: ${minutes}:0${seconds}`;
+        }
+        else{
+            return `Time Remaining: ${minutes}:${seconds}`;    
+        }}
 
 export function Game(props) {
  const [todaysActor, setTodaysActor] = React.useState(null);
