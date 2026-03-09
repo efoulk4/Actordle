@@ -50,13 +50,28 @@ apiRouter.delete("/auth/logout", async(req, res) => {
     res.status(204).end();
 })
 
+const verify = (req, res, next) => {
+    const user = findUser("token", req.cookies[authCookieName])
+    if (user){
+        next();
+    }
+    else {
+        res.status(401).send({msg: "Unauthorized"});
+    }
+}
 
+apiRouter.get("/scores", verify, async(req, res) => {
+    res.send(scores);
+})
 
+apiRouter.post("/scores", verify, async(req, res) => {
+        scores.push(req.body.score);
+        res.send(scores);
+})
 
-
-
-
-
+app.use((_req, res) => {
+  res.sendFile('index.html', { root: 'public' });
+});
 
 
 async function findUser(field, value) {
