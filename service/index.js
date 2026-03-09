@@ -19,7 +19,16 @@ app.use(cookieParser());
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-apiRouter.post()
+apiRouter.post("/auth/create", async (req, res) => {    
+    if(findUser('email', req.body.email)){
+        res.status(409).send({msg: "Existing User"})
+    }
+    else {
+        const user = await createUser(req.body.email, req.body.password);
+    }
+
+
+})
 
 
 
@@ -30,6 +39,24 @@ apiRouter.post()
 
 
 
+async function findUser(field, value) {
+  if (!value) return null;
+
+  return users.find((u) => u[field] === value);
+}
+
+async function createUser(email, password){
+    const passwordHash = await bcrypt.hash(password,10);
+
+    const newUser = {
+        email: email,
+        password: passwordHash,
+        token: uuid.v4()
+    }
+    users.push(newUser);
+
+    return newUser;
+}
 
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
