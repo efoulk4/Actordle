@@ -7,6 +7,7 @@ export function Unauthenticated(props) {
     const [userName, setUserName] = React.useState(props.userName);
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
+    const [displayError, setDisplayError] = React.useState('');
     const navigate = useNavigate();
 
     async function registerUser() {
@@ -23,7 +24,7 @@ export function Unauthenticated(props) {
     }
     else {
       const body = await response.json();
-      setDisplayError(`⚠ Error: ${body.msg}`);
+            setDisplayError(`Error: ${body.msg}`);
     }
 
 }
@@ -43,7 +44,7 @@ async function loginUser(){
     }
     else {
       const body = await response.json();
-      setDisplayError(`⚠ Error: ${body.msg}`);
+            setDisplayError(`Error: ${body.msg}`);
     }
 
 }
@@ -66,6 +67,7 @@ async function loginUser(){
                 </div>
                 <button className="btn btn-primary" type="submit">Login</button>
             </form>
+            {displayError && <p>{displayError}</p>}
             <br />
             <h2>Don't have an account?</h2>
             <form onSubmit={(event) => {

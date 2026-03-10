@@ -95,7 +95,7 @@ apiRouter.post("/auth/create", async (req, res) => {
     else {
         const user = await createUser(req.body.email, req.body.password);
         setAuthCookie(res, user.token);
-        res.send.end();
+    return res.status(200).end();
     }
 })
 
@@ -105,7 +105,7 @@ apiRouter.post("/auth/login", async(req, res) => {
         if(await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
             setAuthCookie(res, user.token);
-            res.send.end();
+      return res.status(200).end();
         }
     }
     res.status(401).send({msg: "Invalid email or password"});
@@ -120,8 +120,8 @@ apiRouter.delete("/auth/logout", async(req, res) => {
     res.status(204).end();
 })
 
-const verify = (req, res, next) => {
-    const user = findUser("token", req.cookies[authCookieName])
+const verify = async (req, res, next) => {
+  const user = await findUser("token", req.cookies[authCookieName])
     if (user){
         next();
     }
