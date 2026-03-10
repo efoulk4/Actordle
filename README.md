@@ -127,13 +127,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
-
+- [x] **Node.js/Express HTTP service** - Debugged by running server on node and frontend from VS code.
+- [x] **Static middleware for frontend** - All files in the public directory are statically served up before any further api routing occurs.
+- [x] **Calls to third party endpoints** - Front end calls a TMDB third party endpoint to display an upcoming movie which it recommends to the user on the about page.
+- [x] **Backend service endpoints** - So many. Login, Register, Delete, Update Scores, Get Scores, Getting the Daily Actor etc.
+- [x] **Frontend calls service endpoints** - Calls all of the above mentioned endpoints
+- [x] **Supports registration, login, logout, and restricted endpoint** - UI has mini authentication, but server has restricted endpoints accessible only via proper cookies associated with registered users.
 ## 🚀 DB deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
