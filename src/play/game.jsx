@@ -48,16 +48,12 @@ export function Game(props) {
         async function saveScore(score) {
             const newScore = {name: username, score: currentScore};
 
-            await fetch('/api/score', {
+            await fetch('/api/scores', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newScore),
             });}
         saveScore({name: username, score: currentScore});
-        if (score.length > 5) {
-        score.length = 5; //keep only top 5 scores
-        }
-        localStorage.setItem('scores', JSON.stringify(score))
         navigate("/scores");
     }
  }, [secondsLeft, navigate]

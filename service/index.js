@@ -122,12 +122,12 @@ apiRouter.delete("/auth/logout", async(req, res) => {
 
 const verify = async (req, res, next) => {
   const user = await findUser("token", req.cookies[authCookieName])
-    if (user){
-        next();
-    }
-    else {
-        res.status(401).send({msg: "Unauthorized"});
-    }
+  if (user){
+    req.user = user;
+    return next();
+  }
+
+  return res.status(401).send({msg: "Unauthorized"});
 }
 
 apiRouter.get("/scores", verify, async(req, res) => {
@@ -135,7 +135,9 @@ apiRouter.get("/scores", verify, async(req, res) => {
 })
 
 apiRouter.post("/scores", verify, async(req, res) => {
-        scores.push(req.body.score);
+  const incomingName = typeof req.body?.name === 'string' ? req.body.name : req.user?.email || 'anonymous';
+  const incomingScore = Number(req.body?.score ?? 0);
+  scores.push({ name: incomingName, score: incomingScore });
         scores.sort((a, b) => b.score - a.score);
         if (scores.length > 5) {
             scores.length = 5; //keep only top 5 scores
@@ -170,7 +172,7 @@ async function createUser(email, password){
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     maxAge: 1000 * 60 * 60 * 24 * 365,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: 'strict',
   });

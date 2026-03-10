@@ -5,7 +5,7 @@ export function Scores() {
     const [scores, setScores] = React.useState([]);
 
 
-    React.useEffect(async () => {
+    React.useEffect(() => {
         async function fetchScores() {
             const response = await fetch('/api/scores');
             if (response.status == 200){
@@ -15,17 +15,26 @@ export function Scores() {
                 return [];
             }
         }
-        sortedScores = await fetchScores();
+
+      async function loadScores() {
+        const sortedScores = await fetchScores();
         setScores(sortedScores);
+      }
+
+      loadScores();
     }, []);
 
       const scoreRows = [];
   if (scores.length) {
     for (const [i, score] of scores.entries()) {
+      const displayName = (typeof score?.name === 'string' && score.name.length > 0)
+        ? score.name.split('@')[0]
+        : 'unknown';
+
       scoreRows.push(
         <tr className='lrow' key={i}>
           <td>{i+1}</td>
-          <td>{score.name.split('@')[0]}</td>
+          <td>{displayName}</td>
           <td>{score.score}</td>
         </tr>
       );
