@@ -28,26 +28,8 @@ app.use(cookieParser());
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-const verify = async (req, res, next) => {
-  const user = await findUser("token", req.cookies[authCookieName])
-    if (user){
-        next();
-    }
-    else {
-        res.status(401).send({msg: "Unauthorized"});
-    }
-}
-
-apiRouter.get("/actor", verify, async (req, res) => {
+apiRouter.get("/actor", async (req, res) => {
     try {
-    const todayKey = getDayKeyUTC();
-    if (req.user.lastPlayedDay === todayKey) {
-      return res.status(403).json({ msg: "You already played today. Come back tomorrow." });
-    }
-
-    // Mark play when the daily game is started so replay attempts are blocked.
-    req.user.lastPlayedDay = todayKey;
-
     const today = new Date();
     const start = new Date(2026, 0, 1);
     const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
@@ -138,13 +120,15 @@ apiRouter.delete("/auth/logout", async(req, res) => {
     res.status(204).end();
 })
 
-
-
-apiRouter.get("/play-status", verify, async (req, res) => {
-  const todayKey = getDayKeyUTC();
-  const hasPlayedToday = req.user.lastPlayedDay === todayKey;
-  res.send({ hasPlayedToday, today: todayKey });
-})
+const verify = async (req, res, next) => {
+  const user = await findUser("token", req.cookies[authCookieName])
+    if (user){
+        next();
+    }
+    else {
+        res.status(401).send({msg: "Unauthorized"});
+    }
+}
 
 apiRouter.get("/scores", verify, async(req, res) => {
     res.send(scores);
@@ -172,8 +156,7 @@ async function createUser(email, password){
     const newUser = {
         email: email,
         password: passwordHash,
-      token: uuid.v4(),
-      lastPlayedDay: null,
+        token: uuid.v4()
     }
     users.push(newUser);
 
@@ -187,10 +170,6 @@ function setAuthCookie(res, authToken) {
     httpOnly: true,
     sameSite: 'strict',
   });
-}
-
-function getDayKeyUTC() {
-  return new Date().toISOString().slice(0, 10);
 }
 
 
