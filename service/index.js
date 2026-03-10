@@ -89,7 +89,7 @@ apiRouter.get("/actor", async (req, res) => {
   }
 })
 apiRouter.post("/auth/create", async (req, res) => {    
-    if(findUser('email', req.body.email)){
+    if(await findUser('email', req.body.email)){
         res.status(409).send({msg: "Existing User"})
     }
     else {
@@ -99,9 +99,9 @@ apiRouter.post("/auth/create", async (req, res) => {
 })
 
 apiRouter.post("/auth/login", async(req, res) => {
-    const user = findUser("email", req.body.email)
+    const user = await findUser("email", req.body.email)
     if (user){
-        if(bcrypt.compare(req.body.password, user.password)){
+        if(await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
             setAuthCookie(res, user.token);
             return;

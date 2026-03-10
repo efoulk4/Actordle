@@ -48,37 +48,10 @@ async function loginUser(){
 }
 
 
-
-    function register(event){
-        event.preventDefault();
-        if (password !== confirmPassword) {
-            alert('Passwords do not match');
-            return;
-        }
-        registerUser();
-        // inform parent about the new authenticated user
-        onAuthChange(userName, AuthState.Authenticated);
-        navigate('/play');
-        }
-
-    function login(event){
-        event.preventDefault();
-        const user = loginUser();
-        if(!user){
-            alert('Invalid email or password');
-        }
-        else{
-            localStorage.setItem('currentUser', userName);
-            // propagate auth change to parent
-            onAuthChange(userName, AuthState.Authenticated);
-            navigate('/play');
-        }
-    }
-
   return (
     <main>
         <h2>Login to play today's Actordle</h2>
-            <form onSubmit={login} className="credentials">
+            <form onSubmit={() => loginUser()} className="credentials">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setUserName(e.target.value)}/>
@@ -91,7 +64,7 @@ async function loginUser(){
             </form>
             <br />
             <h2>Don't have an account?</h2>
-            <form onSubmit={register} className="credentials">
+            <form onSubmit={() => registerUser()} className="credentials">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setUserName(e.target.value)}/>
