@@ -28,6 +28,7 @@ export function Unauthenticated(props) {
 
 }
 async function loginUser(){
+    
     const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -51,7 +52,10 @@ async function loginUser(){
   return (
     <main>
         <h2>Login to play today's Actordle</h2>
-            <form onSubmit={() => loginUser()} className="credentials">
+            <form onSubmit={(event) => {
+                event.preventDefault();
+                loginUser();
+                }} className="credentials">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setUserName(e.target.value)}/>
@@ -64,7 +68,10 @@ async function loginUser(){
             </form>
             <br />
             <h2>Don't have an account?</h2>
-            <form onSubmit={() => registerUser()} className="credentials">
+            <form onSubmit={(event) => {
+                    event.preventDefault();
+                    registerUser();
+                    }} className="credentials">
                 <div>
                     <span>Email</span>
                     <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setUserName(e.target.value)}/>

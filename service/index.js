@@ -95,6 +95,7 @@ apiRouter.post("/auth/create", async (req, res) => {
     else {
         const user = await createUser(req.body.email, req.body.password);
         setAuthCookie(res, user.token);
+        res.send.end();
     }
 })
 
@@ -104,7 +105,7 @@ apiRouter.post("/auth/login", async(req, res) => {
         if(await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
             setAuthCookie(res, user.token);
-            return;
+            res.send.end();
         }
     }
     res.status(401).send({msg: "Invalid email or password"});
