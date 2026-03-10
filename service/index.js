@@ -28,8 +28,16 @@ app.use(cookieParser());
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-apiRouter.get("/actor", async (req, res) => {
+apiRouter.get("/actor", verify, async (req, res) => {
     try {
+    const todayKey = getDayKeyUTC();
+    if (req.user.lastPlayedDay === todayKey) {
+      return res.status(403).json({ msg: "You already played today. Come back tomorrow." });
+    }
+
+    // Mark play when the daily game is started so replay attempts are blocked.
+    req.user.lastPlayedDay = todayKey;
+
     const today = new Date();
     const start = new Date(2026, 0, 1);
     const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
@@ -130,6 +138,12 @@ const verify = async (req, res, next) => {
     }
 }
 
+apiRouter.get("/play-status", verify, async (req, res) => {
+  const todayKey = getDayKeyUTC();
+  const hasPlayedToday = req.user.lastPlayedDay === todayKey;
+  res.send({ hasPlayedToday, today: todayKey });
+})
+
 apiRouter.get("/scores", verify, async(req, res) => {
     res.send(scores);
 })
@@ -156,7 +170,8 @@ async function createUser(email, password){
     const newUser = {
         email: email,
         password: passwordHash,
-        token: uuid.v4()
+      token: uuid.v4(),
+      lastPlayedDay: null,
     }
     users.push(newUser);
 
@@ -170,6 +185,10 @@ function setAuthCookie(res, authToken) {
     httpOnly: true,
     sameSite: 'strict',
   });
+}
+
+function getDayKeyUTC() {
+  return new Date().toISOString().slice(0, 10);
 }
 
 

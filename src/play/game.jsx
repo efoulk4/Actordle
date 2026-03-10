@@ -18,18 +18,31 @@ export function Game(props) {
  const [currentGuess, setCurrentGuess] = React.useState('');
  const [currentScore, setCurrentScore] = React.useState(0);
  const [guessedMovies, setGuessedMovies] = React.useState([]);
+ const [playLockedMessage, setPlayLockedMessage] = React.useState('');
  const username = props.username || 'Guest';
  const navigate = useNavigate();
 
  useEffect(() => {
     fetch("/api/actor")
-    .then((response) => response.json())
-    .then((response) => {
-        setTodaysActor(response);
+    .then(async (response) => {
+        if (!response.ok) {
+            const body = await response.json().catch(() => ({}));
+            setPlayLockedMessage(body.msg || 'Unable to start game right now.');
+            return null;
+        }
+        return response.json();
     })
- }, [])
+    .then((response) => {
+        if (response) {
+            setTodaysActor(response);
+        }
+    })
+ }, [todaysActor, playLockedMessage])
 
  useEffect(() => {
+ if (!todaysActor || playLockedMessage) {
+    return;
+ }
  const id = setInterval(() => {
             setSecondsLeft((prev) => {
                 if (prev <= 1) {
@@ -58,6 +71,9 @@ export function Game(props) {
 
     function handleGuess(event){
         event.preventDefault();
+        if (!todaysActor || playLockedMessage) {
+            return;
+        }
         if (todaysActor.movies.includes(currentGuess)){
             setCurrentScore(currentScore+1);
             setGuessedMovies([...guessedMovies,currentGuess]);
@@ -66,7 +82,17 @@ export function Game(props) {
     }
 
 
-  return (
+    if (playLockedMessage) {
+        return (
+            <section>
+                <p>{username}</p>
+                <h2>Unable to Play Right Now</h2>
+                <p>{playLockedMessage}</p>
+            </section>
+        );
+    }
+
+    return (
     <section>
           <p>{username}</p>
             <section className="playboard">
