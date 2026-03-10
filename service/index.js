@@ -28,6 +28,16 @@ app.use(cookieParser());
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+const verify = async (req, res, next) => {
+  const user = await findUser("token", req.cookies[authCookieName])
+    if (user){
+        next();
+    }
+    else {
+        res.status(401).send({msg: "Unauthorized"});
+    }
+}
+
 apiRouter.get("/actor", verify, async (req, res) => {
     try {
     const todayKey = getDayKeyUTC();
@@ -128,15 +138,7 @@ apiRouter.delete("/auth/logout", async(req, res) => {
     res.status(204).end();
 })
 
-const verify = async (req, res, next) => {
-  const user = await findUser("token", req.cookies[authCookieName])
-    if (user){
-        next();
-    }
-    else {
-        res.status(401).send({msg: "Unauthorized"});
-    }
-}
+
 
 apiRouter.get("/play-status", verify, async (req, res) => {
   const todayKey = getDayKeyUTC();
