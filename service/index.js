@@ -167,3 +167,9 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
