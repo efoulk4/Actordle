@@ -15,8 +15,16 @@ export function Unauthenticated(props) {
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
             },
-        body: JSON.stringify({ email, password })
-    });
+        body: JSON.stringify({ email: userName, password: password })
+    })
+    if (response.status == 200){
+        localStorage.setItem('currentUser', userName);
+        props.onLogin(userName)
+    }
+    else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
 
 }
 async function loginUser(){
@@ -29,8 +37,8 @@ async function loginUser(){
 
     });
     if (response.status == 200){
-        localStorage.setItem('currentUser', email);
-        props.onLogin(email)
+        localStorage.setItem('currentUser', userName);
+        props.onLogin(userName)
     }
     else {
       const body = await response.json();
@@ -47,23 +55,22 @@ async function loginUser(){
             alert('Passwords do not match');
             return;
         }
-        registerUser(email, password);
-        localStorage.setItem('currentUser', email);
+        registerUser();
         // inform parent about the new authenticated user
-        onAuthChange(email, AuthState.Authenticated);
+        onAuthChange(userName, AuthState.Authenticated);
         navigate('/play');
         }
 
     function login(event){
         event.preventDefault();
-        const user = loginUser(email, password);
+        const user = loginUser();
         if(!user){
             alert('Invalid email or password');
         }
         else{
-            localStorage.setItem('currentUser', email);
+            localStorage.setItem('currentUser', userName);
             // propagate auth change to parent
-            onAuthChange(email, AuthState.Authenticated);
+            onAuthChange(userName, AuthState.Authenticated);
             navigate('/play');
         }
     }
