@@ -4,15 +4,16 @@ import { registerUser, loginUser } from '../service';
 import { AuthState } from './authstate';
 import '../app.css';
 
-async function registerUser(email, password) {
-    const response = await fetch('/api/auth/create', {
-        method: 'POST',
-        headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-            },
-        body: JSON.stringify({ email, password })
-    });
-}
+
+// async function registerUser(email, password) {
+//     const response = await fetch('/api/auth/create', {
+//         method: 'POST',
+//         headers: {
+//         'Content-type': 'application/json; charset=UTF-8',
+//             },
+//         body: JSON.stringify({ email, password })
+//     });
+// }
 
 export function Login({ userName, authState, onAuthChange }) {
     const [email, setEmail] = React.useState('');

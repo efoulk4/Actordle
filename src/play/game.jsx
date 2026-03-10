@@ -75,8 +75,12 @@ export function Game(props) {
             </section>
             <section id="todaysactor">
                 <p>Today's Actor from TMDB is</p>
-                <h2 style={{fontSize: '1em' }}>{todaysActor.name}</h2>
-                <img src={todaysActor.image} alt={`image of ${todaysActor.name}`} className="actorimage" />
+                <h2 style={{fontSize: '1em' }}>{todaysActor?.name ?? 'Loading actor...'}</h2>
+                {todaysActor?.image ? (
+                    <img src={todaysActor.image} alt={`image of ${todaysActor.name}`} className="actorimage" />
+                ) : (
+                    <p>Fetching actor image...</p>
+                )}
             </section>
             <h3 style={{fontSize: 'smaller' }}>Was featured in...</h3>
             <table className="prevguesses">
