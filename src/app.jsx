@@ -21,8 +21,8 @@ export default function App() {
         <nav>
             <menu className="navbar">
                 <li className="navitem"><NavLink className="navlink" to="">Home</NavLink></li>
-                <li className="navitem"><NavLink className="navlink" to="/play">Play Actordle</NavLink></li>
-                <li className="navitem"><NavLink className="navlink" to="/scores">Today's Leaderboard</NavLink></li>
+                {authState === authState.Authenticated && (<li className="navitem"><NavLink className="navlink" to="/play">Play Actordle</NavLink></li>)}
+                {authState === authState.Authenticated && (<li className="navitem"><NavLink className="navlink" to="/scores">Today's Leaderboard</NavLink></li>)}
                 <li className="navitem"><NavLink className="navlink" to="/about">What is Actordle?</NavLink></li>
             </menu>
         </nav>
