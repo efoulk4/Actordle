@@ -67,6 +67,7 @@ apiRouter.get("/actor", async (req, res) => {
           !m.character.toLowerCase().includes('self') &&
           m.original_language === 'en' && 
             !m.character.toLowerCase().includes('voice')
+
         );
 
         if (validMovies.length >= 7) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthState } from './authstate';
-import { Authenticated } from '/authLogin'
-import { Unauthenticated } from '/unAuthLogin'
+import { Authenticated } from './authLogin';
+import { Unauthenticated } from './unAuthLogin';
 import '../app.css';
 
 export function Login({ userName, authState, onAuthChange }) {
