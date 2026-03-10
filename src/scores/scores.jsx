@@ -5,9 +5,17 @@ export function Scores() {
     const [scores, setScores] = React.useState([]);
 
 
-    React.useEffect(() => {
-        const jsonScores = JSON.parse(localStorage.getItem('scores') || '[]');
-        const sortedScores = jsonScores.sort((a, b) => b.score - a.score);
+    React.useEffect(async () => {
+        async function fetchScores() {
+            const response = await fetch('/api/scores');
+            if (response.status == 200){
+                return await response.json();
+            }
+            else {
+                return [];
+            }
+        }
+        sortedScores = await fetchScores();
         setScores(sortedScores);
     }, []);
 

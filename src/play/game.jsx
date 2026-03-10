@@ -45,8 +45,15 @@ export function Game(props) {
 
  useEffect(() => {
     if (secondsLeft == 0) {
-        const score = JSON.parse((localStorage.getItem('scores') || '[]'));
-        score.push({name: username, score: currentScore});
+        async function saveScore(score) {
+            const newScore = {name: username, score: currentScore};
+
+            await fetch('/api/score', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newScore),
+            });}
+        saveScore({name: username, score: currentScore});
         if (score.length > 5) {
         score.length = 5; //keep only top 5 scores
         }

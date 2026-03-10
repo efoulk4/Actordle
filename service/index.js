@@ -136,6 +136,10 @@ apiRouter.get("/scores", verify, async(req, res) => {
 
 apiRouter.post("/scores", verify, async(req, res) => {
         scores.push(req.body.score);
+        scores.sort((a, b) => b.score - a.score);
+        if (scores.length > 5) {
+            scores.length = 5; //keep only top 5 scores
+        }
         res.send(scores);
 })
 
