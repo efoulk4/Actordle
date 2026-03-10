@@ -64,10 +64,12 @@ apiRouter.get("/actor", async (req, res) => {
         // Filter for actual movie roles (ignoring "Self" or "Uncredited")
         const validMovies = detailData.movie_credits.cast.filter(m => 
           m.character && 
-          !m.character.toLowerCase().includes('self')
+          !m.character.toLowerCase().includes('self') &&
+          m.original_language === 'en' && 
+            !m.character.toLowerCase().includes('voice')
         );
 
-        if (validMovies.length >= 5) {
+        if (validMovies.length >= 7) {
           selectedActor = {
             name: detailData.name,
             image: `https://image.tmdb.org/t/p/original${detailData.profile_path}`,
