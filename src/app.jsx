@@ -33,9 +33,7 @@ export default function App() {
 
     <Routes>
         <Route path='/' element={<Login
-
                 userName={userName}
-  
                 authState={authState}
                 onAuthChange={(userName, authState) => {
                   setAuthState(authState);

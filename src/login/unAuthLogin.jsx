@@ -3,34 +3,41 @@ import { useNavigate } from 'react-router-dom';
 import { AuthState } from './authstate';
 import '../app.css';
 
+export function Unauthenticated(props) {
+    const [userName, setUserName] = React.useState(props.userName);
+    const [password, setPassword] = React.useState('');
+    const [confirmPassword, setConfirmPassword] = React.useState('');
+    const navigate = useNavigate();
 
-async function registerUser(email, password) {
+    async function registerUser() {
     const response = await fetch('/api/auth/create', {
         method: 'POST',
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
             },
         body: JSON.stringify({ email, password })
-        
     });
+
 }
-async function loginUser(email,password){
+async function loginUser(){
     const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
             },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email: userName, password })
 
     });
+    if (response.status == 200){
+        localStorage.setItem('currentUser', email);
+        props.onLogin(email)
+    }
+    else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
 
 }
-
-export function Unauthenticated({ userName, authState, onAuthChange }) {
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [confirmPassword, setConfirmPassword] = React.useState('');
-    const navigate = useNavigate();
 
 
 
@@ -67,7 +74,7 @@ export function Unauthenticated({ userName, authState, onAuthChange }) {
             <form onSubmit={login} className="credentials">
                 <div>
                     <span>Email</span>
-                    <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setEmail(e.target.value)}/>
+                    <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setUserName(e.target.value)}/>
                 </div>
                 <div>
                     <span>Password</span>
@@ -80,7 +87,7 @@ export function Unauthenticated({ userName, authState, onAuthChange }) {
             <form onSubmit={register} className="credentials">
                 <div>
                     <span>Email</span>
-                    <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setEmail(e.target.value)}/>
+                    <input type="email" name="Email" placeholder="Email" required onChange ={(e) => setUserName(e.target.value)}/>
                 </div>
                 <div>
                     <span>Password</span>
