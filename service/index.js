@@ -130,18 +130,18 @@ const verify = async (req, res, next) => {
 }
 
 apiRouter.get("/scores", verify, async(req, res) => {
-    res.send(scores);
+    res.send(await DB.getScores());
 })
 
 apiRouter.post("/scores", verify, async(req, res) => {
   const incomingName = typeof req.body?.name === 'string' ? req.body.name : req.user?.email || 'anonymous';
   const incomingScore = Number(req.body?.score ?? 0);
-  scores.push({ name: incomingName, score: incomingScore });
-        scores.sort((a, b) => b.score - a.score);
-        if (scores.length > 5) {
-            scores.length = 5; //keep only top 5 scores
-        }
-        res.send(scores);
+  await DB.addScore({ name: incomingName, score: incomingScore });
+        // scores.sort((a, b) => b.score - a.score);    //Sorting Scores is now handled in DB
+        // if (scores.length > 5) {
+        //     scores.length = 5; //keep only top 5 scores
+        // }
+        res.send(await DB.getScores());
 })
 
 app.use((_req, res) => {

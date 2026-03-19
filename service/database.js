@@ -42,3 +42,6 @@ async function getScores() {
   const cursor = scoreCollection.find(query, options);
   return cursor.toArray();
 }
+async function addScore(score) {
+    await scoreCollection.insertOne(score);
+}
