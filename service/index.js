@@ -105,6 +105,7 @@ apiRouter.post("/auth/login", async(req, res) => {
     if (user){
         if(await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
+            DB.updateUser(user);
             setAuthCookie(res, user.token);
       return res.status(200).end();
         }
@@ -154,7 +155,10 @@ app.use((_req, res) => {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 async function createUser(email, password){
