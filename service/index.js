@@ -166,10 +166,12 @@ async function createUser(email, password){
         password: passwordHash,
         token: uuid.v4()
     }
-    users.push(newUser);
+    await DB.addUser(newUser);
 
     return newUser;
 }
+
+
 async function getScores(){
   return DB.getScores();
 }

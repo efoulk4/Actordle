@@ -45,3 +45,12 @@ async function getScores() {
 async function addScore(score) {
     await scoreCollection.insertOne(score);
 }
+
+module.exports = {
+    getUser,
+    getUserByToken,
+    updateUser,
+    removeAuth,
+    getScores,
+    addScore
+};
