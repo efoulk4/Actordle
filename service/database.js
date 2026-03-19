@@ -23,6 +23,9 @@ const scoreCollection = db.collection('score');
 function getUser(email){
     return userCollection.findOne({email: email})
 }
+async function addUser(user) {
+    await userCollection.insertOne(user);
+}
 
 function getUserByToken(token){
     return userCollection.findOne({token: token})
@@ -48,6 +51,7 @@ async function addScore(score) {
 
 module.exports = {
     getUser,
+  addUser,
     getUserByToken,
     updateUser,
     removeAuth,
