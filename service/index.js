@@ -16,9 +16,6 @@ const options = {
 
 const authCookieName = 'token';
 
-let users = [];
-let scores = [];
-
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 
@@ -172,6 +169,9 @@ async function createUser(email, password){
     users.push(newUser);
 
     return newUser;
+}
+async function getScores(){
+  return DB.getScores();
 }
 
 function setAuthCookie(res, authToken) {

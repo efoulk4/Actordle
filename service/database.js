@@ -33,3 +33,12 @@ async function updateUser(user) {
 async function removeAuth(user){
     await userCollection.updateOne({email: user.email}, {$unset: { token: 1 } });
 }
+async function getScores() {
+  const query = { score: { $gt: 0, $lt: 900 } };
+  const options = {
+    sort: { score: -1 },
+    limit: 5,
+  };
+  const cursor = scoreCollection.find(query, options);
+  return cursor.toArray();
+}
