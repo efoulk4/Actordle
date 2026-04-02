@@ -42,11 +42,16 @@ apiRouter.get("/actor", async (req, res) => {
     );
     const popularData = await popularRes.json();
 
-    let personIndex = diffDays % 20;
+    if (!popularData?.results?.length) {
+      return res.status(502).json({ error: "TMDB returned no popular actors" });
+    }
+
+    const startIndex = diffDays % popularData.results.length;
     let selectedActor = null;
 
-    // 2. Validation Loop
-    while (!selectedActor && personIndex < popularData.results.length) {
+    // 2. Validation loop with wraparound so all candidates are checked
+    for (let offset = 0; offset < popularData.results.length && !selectedActor; offset++) {
+      const personIndex = (startIndex + offset) % popularData.results.length;
       const candidate = popularData.results[personIndex];
 
       // Filtering for "Real" Actors with headshots
@@ -60,7 +65,7 @@ apiRouter.get("/actor", async (req, res) => {
         const detailData = await detailRes.json();
 
         // Filter for actual movie roles (ignoring "Self" or "Uncredited")
-        const validMovies = detailData.movie_credits.cast.filter(m => 
+        const validMovies = (detailData.movie_credits?.cast || []).filter(m => 
           m.character && 
           !m.character.toLowerCase().includes('self') &&
           m.original_language === 'en' && 
@@ -76,11 +81,13 @@ apiRouter.get("/actor", async (req, res) => {
           };
         }
       }
-      personIndex++; 
     }
 
-    res.send(selectedActor);
-    return;
+    if (!selectedActor) {
+      return res.status(404).json({ error: "No actor found" });
+    }
+
+    return res.json(selectedActor);
   } catch (err) {
     console.error("Fetch Error:", err);
     return res.status(404).json({ error: "No actor found" });
