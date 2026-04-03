@@ -26,7 +26,7 @@ class scoreEventNotifier {
   }
     processEvent(event) {
         this.updates.push(event);
-        if (this.updates.length > 5) {
+        if (this.updates.length > 2) {
             this.updates.shift();
         }
         this.handlers.forEach((handler) => handler(this.updates));
