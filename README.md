@@ -142,8 +142,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Backend has the simplest functionality possible, which distributes messages to all observers, and processes pongs to ensure active connections.
+- [x] **Frontend makes WebSocket connection** - Each connection is upgraded from HTTPS to WSS as soon as the frontend is rendered to due to imports of notifier
+- [x] **Data sent over WebSocket connection** - The only information dispersed to all users is when someone scores.
+- [x] **WebSocket data displayed** - Data is dynamically displayed in the "friends playing" section of the play tab.
+- [x] **Application is fully functional** - I fixed QOL things too! Now my sister can't get 71 points by putting in the same movie multiple times and it's no longer case sensitive. I look forward to be being able to tweak the site beyond the scope of the class.
