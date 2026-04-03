@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
+const { setupWebSocket } = require('./proxy.js')
 
 const options = {
   method: 'GET',
@@ -193,7 +194,9 @@ function setAuthCookie(res, authToken) {
 }
 
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
+
+setupWebSocket(server);
