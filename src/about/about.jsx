@@ -12,26 +12,43 @@ export function About() {
 };
 
   React.useEffect(() => {
-    fetch('https://api.themoviedb.org/3/movie/upcoming', options)
+    const today = new Date().toISOString().slice(0, 10);
+    const baseQuery = new URLSearchParams({
+      language: 'en-US',
+      region: 'US',
+      sort_by: 'popularity.desc',
+      include_adult: 'false',
+      page: '1',
+    });
+    baseQuery.set('primary_release_date.gte', today);
+    const strictQuery = new URLSearchParams(baseQuery);
+    strictQuery.set('vote_count.gte', '100');
+
+    fetch(`https://api.themoviedb.org/3/discover/movie?${strictQuery.toString()}`, options)
       .then(res => res.json())
       .then(json => {
+        if (json.results.length > 0) {
+          const firstMovie = json.results[0];
+          setMovie({
+            title: firstMovie.title,
+            summary: firstMovie.overview,
+            releaseDate: firstMovie.release_date,
+          });
+          return;
+        }
 
-      const today = new Date();
-
-      const filteredMovies = json.results.filter(movie => {
-        const release = new Date(movie.release_date);
-        return release >= today;
-      });
-
-      if (filteredMovies.length > 0) {
-        const firstMovie = filteredMovies[0];
-
-        setMovie({
-          title: firstMovie.title,
-          summary: firstMovie.overview,
-          releaseDate: firstMovie.release_date
-        });
-      }
+        return fetch(`https://api.themoviedb.org/3/discover/movie?${baseQuery.toString()}`, options)
+          .then((res) => res.json())
+          .then((fallbackJson) => {
+            if (fallbackJson.results.length > 0) {
+              const firstMovie = fallbackJson.results[0];
+              setMovie({
+                title: firstMovie.title,
+                summary: firstMovie.overview,
+                releaseDate: firstMovie.release_date,
+              });
+            }
+          });
 
       })
       .catch(err => console.error(err));
