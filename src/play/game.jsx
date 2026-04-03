@@ -19,7 +19,8 @@ export function Game(props) {
  const [currentGuess, setCurrentGuess] = React.useState('');
  const [currentScore, setCurrentScore] = React.useState(0);
  const [guessedMovies, setGuessedMovies] = React.useState([]);
- const username = props.username || 'Guest';
+ const rawUsername = props.username || 'Guest';
+ const username = rawUsername.includes('@') ? rawUsername.split('@')[0] : rawUsername;
  const navigate = useNavigate();
 
  useEffect(() => {
