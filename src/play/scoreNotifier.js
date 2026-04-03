@@ -24,6 +24,9 @@ class scoreEventNotifier {
      removeHandler(handler) {
     this.handlers = this.handlers.filter((h) => h !== handler);
   }
+    soundTheAlarm(event) {
+        this.socket.send(JSON.stringify(event));
+    }
     processEvent(event) {
         this.updates.push(event);
         if (this.updates.length > 2) {

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '../app.css';
 import { useNavigate } from 'react-router-dom';
+import { notifier } from './scoreNotifier';
 
 function formatTime(t){
         const minutes = Math.floor(t / 60);
@@ -47,7 +48,8 @@ export function Game(props) {
     if (secondsLeft == 0) {
         async function saveScore(score) {
             const newScore = {name: username, score: currentScore};
-
+            const eventText = json.stringify(newScore.name) + " just scored " + json.stringify(newScore.score) + "!"
+            notifier.soundTheAlarm(eventText);
             await fetch('/api/scores', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
