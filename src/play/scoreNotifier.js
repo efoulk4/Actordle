@@ -8,7 +8,7 @@ class scoreEventNotifier {
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
         this.socket.onmessage = async (message) => {
         try {
-        const event = JSON.parse(await msg.data.text());
+        const event = JSON.parse(await message.data.text());
         this.processEvent(event);
         }
         catch {}

@@ -48,7 +48,7 @@ export function Game(props) {
     if (secondsLeft == 0) {
         async function saveScore(score) {
             const newScore = {name: username, score: currentScore};
-            const eventText = json.stringify(newScore.name) + " just scored " + json.stringify(newScore.score) + "!"
+            const eventText = JSON.stringify(newScore.name) + " just scored " + JSON.stringify(newScore.score) + "!"
             notifier.soundTheAlarm(eventText);
             await fetch('/api/scores', {
             method: 'POST',

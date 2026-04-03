@@ -15,14 +15,14 @@ function setupWebSocket(httpServer) {
         });
 
 
-        socket.on('pong'), () => {
+      socket.on('pong', () => {
             socket.isAlive = true;
-        }
+      });
 
     });
 
     setInterval(() => {
-    socketServer.clients.forEach(function each(client) {
+    wss.clients.forEach(function each(client) {
       if (client.isAlive === false) return client.terminate();
 
       client.isAlive = false;
