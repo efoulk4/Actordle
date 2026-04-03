@@ -63,9 +63,23 @@ export function Game(props) {
 
     function handleGuess(event){
         event.preventDefault();
-        if (todaysActor.movies.includes(currentGuess)){
-            setCurrentScore(currentScore+1);
-            setGuessedMovies([...guessedMovies,currentGuess]);
+        const guess = currentGuess.trim();
+        if (!guess) {
+            setCurrentGuess('');
+            return;
+        }
+
+        const alreadyGuessed = guessedMovies.some(
+            (movie) => movie.toLowerCase() === guess.toLowerCase()
+        );
+
+        const matchedMovie = todaysActor?.movies?.find(
+            (movie) => movie.toLowerCase() === guess.toLowerCase()
+        );
+
+        if (matchedMovie && !alreadyGuessed){
+            setCurrentScore((prev) => prev + 1);
+            setGuessedMovies((prev) => [...prev, matchedMovie]);
         }
         setCurrentGuess('');
     }
