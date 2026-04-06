@@ -6,8 +6,12 @@ import '../app.css';
 export function Authenticated(props) {
     const navigate = useNavigate();
 
-    function logout(event){
+    async function logout(event){
         event.preventDefault();
+        await fetch('/api/auth/logout', {
+            method: 'DELETE',
+            credentials: 'include'
+        });
         localStorage.removeItem('currentUser');
         props.onLogout();
         navigate('/');

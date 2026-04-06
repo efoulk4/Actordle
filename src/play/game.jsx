@@ -54,6 +54,7 @@ export function Game(props) {
             await fetch('/api/scores', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify(newScore),
             });}
         saveScore({name: username, score: currentScore});

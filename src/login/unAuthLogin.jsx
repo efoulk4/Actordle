@@ -16,6 +16,7 @@ export function Unauthenticated(props) {
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
             },
+        credentials: 'include',
         body: JSON.stringify({ email: userName, password: password })
     })
     if (response.status == 200){
@@ -35,6 +36,7 @@ async function loginUser(){
         headers: {
         'Content-type': 'application/json; charset=UTF-8',
             },
+        credentials: 'include',
         body: JSON.stringify({ email: userName, password })
 
     });

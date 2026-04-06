@@ -7,7 +7,7 @@ export function Scores() {
 
     React.useEffect(() => {
         async function fetchScores() {
-            const response = await fetch('/api/scores');
+            const response = await fetch('/api/scores', { credentials: 'include' });
             if (response.status == 200){
                 return await response.json();
             }
